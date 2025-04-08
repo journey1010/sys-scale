@@ -1,0 +1,295 @@
+.btn-ctm {
+    color: #000;
+    font-size: 20px;
+    padding: 0;
+}
+
+.img-logo {
+    margin-top: 3px;
+    margin-right: 3px;
+    width: 25px;
+}
+
+.img-login {
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    height: 99px;
+    width: 196px;
+}
+
+.sidebar, .sidebar-bg {
+    background: #0078bf; /*unap*/
+    /*background: #411737; /*upal*/
+    /*background: #273ca3;*/
+}
+
+.sidebar .nav > li.active > a, .sidebar .nav > li.active > a:focus, .sidebar .nav > li.active > a:hover, .navbar-nav > li > a .user-image.online:before, .page-sidebar-minified .sidebar .nav > li.has-sub.active:focus > a, .page-sidebar-minified .sidebar .nav > li.has-sub.active:hover > a, .page-sidebar-minified .sidebar .nav > li.has-sub.active > a, .label.label-theme, .btn.btn-scroll-to-top {
+    background: #0d9ddb; /*unap*/
+    /*background: #fff; /*upal*/
+    /*background: #132269;*/
+}
+
+.sidebar .nav>li>a {
+    color: #e8e4e4;
+}
+
+.sidebar .nav>li.expand>a, .sidebar .nav>li>a:focus, .sidebar .nav>li>a:hover {
+    color: #fff;
+}
+
+.sidebar .nav>li.nav-profile {
+    background: #ffe900; /*unap*/
+    /*background: #411737; /*upal*/
+    /*background: #323234;*/
+    border-bottom: 2px solid white; /*upal*/
+}
+
+.sidebar .nav>li.nav-profile .info small {
+    color: #6abf8f; /*unap*/
+    /*color: #7a326a; /*upal*/
+    /*color: #e4e7e8;*/
+}
+
+.navbar-default .navbar-brand {
+    color: #306529;
+}
+
+/*.sidebar .nav>li.active>a i {*/
+    /*color: #411737; !*upal*!*/
+/*}*/
+
+/*.sidebar .nav>li.active>a,*/
+/*.sidebar .nav>li.active>a:focus,*/
+/*.sidebar .nav>li.active>a:hover {*/
+    /*color: #411737; !*upal*!*/
+/*}*/
+
+
+/*Pedro*/
+
+.modal-title {
+    text-align: center !important;
+    color: #0d672e !important; /*unap*/
+    /*color: #266cb4 !important;*/ /*upal*/
+}
+
+.btn-success {
+    color: #fff !important;
+    background: #0d9ddb !important;
+    border-color: #0d9ddb !important;
+
+    /*color: #fff !important;
+    background: #0c4d90 !important;
+    border-color: #134d8a !important;*/
+
+    /*color: #fff !important;*/
+    /*background: #903d7e!important;*/
+    /*border-color: #903d7e !important;*/
+}
+
+.btn.btn-primary,
+.modal-body .btn-info {
+    color: #fff !important;
+    background: #0078bf !important;
+    border-color: #0078bf !important;
+
+    /*color: #fff !important;
+    background: #0c4d90 !important;
+    border-color: #134d8a !important;*/
+
+    /*color: #fff !important;*/
+    /*background: #903d7e !important;*/
+    /*border-color: #903d7e !important;*/
+}
+
+.btn.btn-info {
+    color: #fff !important;
+    background: #0d9ddb !important;
+    border-color: #0d9ddb !important;
+
+    /*color: #fff !important;
+    background: #266cb4 !important;
+    border-color: #266cb4 !important;*/
+
+    /*color: #fff !important;*/
+    /*background: #903d7e !important;*/
+    /*border-color: #903d7e !important;*/
+}
+
+.btn-info.active,
+.btn-info:active,
+.btn-info:focus,
+.btn-info:hover,
+.open>.dropdown-toggle.btn-info,
+.open>.dropdown-toggle.btn-info:focus,
+.open>.dropdown-toggle.btn-info:hover {
+    background: #459022 !important;
+    border-color: #459022 !important;
+
+    /*background: #2e75bd !important;
+    border-color: #2e75bd !important;*/
+
+    /*background: #751a61 !important;*/
+    /*border-color: #751a61 !important;*/
+}
+
+ol li a {
+    color : #459022 !important;
+    /*color : #273ca3 !important;*/
+    /*color: #411737 !important;*/
+}
+
+.panel-inverse>.panel-heading {
+    background: #808084 !important;
+}
+
+.btn-ctm .fa-gear {
+    color: #459022 !important;
+    /*color: #751a61 !important;*/
+    /*color: #273ca3 !important;*/
+}
+
+.panel-heading-btn .btn{
+    color: #fff !important;
+    background: #67676c !important;
+    border-color: #67676c !important;
+    width: 22px !important;
+    height: 22px !important;
+    font-size: 11px !important;
+    line-height: 22px !important;
+}
+
+.label.label-danger {
+    background: #f14940 !important;
+}
+
+.label.label-success {
+    background: #41b955 !important;
+}
+
+.btn-scroll-to-top {
+    background: #0d9ddb !important;
+}
+
+.dropdown-akdemic {
+    padding-left: 20px;
+    margin-left: 10px;
+    border-left: 1px solid #d2d9e5;
+    height: 37px;
+}
+
+.akdemic-avatar {
+    width: 37px;
+    height: 37px;
+    background-color: #f2f4f8;
+    border-color: #dfe4ed;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.akdemic-avatar img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+.akdemic-box {
+    position: absolute;
+    background: #ffffff;
+    border: 1px solid #d2d9e5;
+}
+
+.akdemic-box:after, .akdemic-box:before {
+    bottom: 100%;
+    left: 95%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.akdemic-box:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-bottom-color: #ffffff;
+    border-width: 8px;
+    margin-left: -8px;
+}
+
+.akdemic-box:before {
+    border-color: rgba(194, 225, 245, 0);
+    border-bottom-color: #d2d9e5;
+    border-width: 9px;
+    margin-left: -9px;
+}
+
+.akdemic-label {
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 16px;
+    color: #4B4B4B;
+}
+
+.akdemic-menu {
+    width: 370px;
+    min-width: 200px;
+    padding: 30px 40px 15px 40px;
+}
+
+@media (max-width: 390px) {
+    .akdemic-menu {
+        width: 280px;
+        padding: 20px 25px 15px 25px;
+    }
+}
+
+@media (max-width: 300px) {
+    .akdemic-menu {
+        width: 100%;
+        padding: 20px;
+    }
+}
+
+.akdemic-menu .col-lg-4,
+.akdemic-menu .col-md-4,
+.akdemic-menu .col-xs-4 {
+    padding: 4px 20px;
+}
+
+.akdemic-menu .app-link {
+    margin-bottom: 1.15rem;
+    /*margin-bottom: 1.8rem;*/
+    display: block;
+    box-shadow: 0px 3px 5px #E6E6E6;
+    -webkit-box-shadow: 0px 5px 0px 0px rgba(230,230,230,0.75);
+    -moz-box-shadow: 0px 5px 0px 0px rgba(230,230,230,0.75);
+    /*box-shadow: 0px 5px 0px 0px rgba(230,230,230,0.75);*/
+}
+
+.akdemic-menu .app-link img {
+    width: 100%;
+}
+
+.akdemic-menu .akdemic-link {
+    text-align: center;
+    display: block;
+    color: #4B4B4B
+}
+
+.akdemic-link-border {
+    border-right: 1px solid #d2d9e5;
+}
+
+#sidebar{
+    /*padding-top: 100px;/*UPAL*/
+    padding-top: 57px;/*UNAP*/
+}
+.navh-tu{
+    /*height: 100px;
+    margin-top: 10px;*/ /*UPAL*/
+    height: 53px; /*UNAP*/
+}
