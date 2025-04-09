@@ -1,44 +1,17 @@
-version: '3.8'
-
 services:
   app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: laravel_app
+    container_name: gorel_escalafon
     working_dir: /var/www/html
     volumes:
       - ./:/var/www/html
     ports:
       - "8001:8000"
-    depends_on:
-      - db
-    command: sh -c "composer install && php artisan serve"
+    command: sh -c "php artisan serve --host=0.0.0.0 --port=8000"
     environment:
       - COMPOSER_ALLOW_SUPERUSER=1
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     tty: true
-
-  db:
-    image: mysql:8
-    container_name: laravel_db
-    restart: always
-    ports:
-      - "3306:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: laravel
-      MYSQL_USER: laravel
-      MYSQL_PASSWORD: secret
-    volumes:
-      - db_data:/var/lib/mysql
-
-  composer:
-    image: composer:2
-    container_name: laravel_composer
-    volumes:
-      - ./:/app
-    working_dir: /app
-    entrypoint: [""]
-
-volumes:
-  db_data:
