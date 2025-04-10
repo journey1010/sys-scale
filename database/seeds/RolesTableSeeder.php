@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class RolesTableSeeder extends Seeder
 {
@@ -10,13 +11,14 @@ class RolesTableSeeder extends Seeder
         DB::table('roles')->insert([[
             'name' => 'admin',
             'display_name' => 'Administrador',
-            'description' => 'Encargado de gestionar las solicitudes y datos del personal.',
+            'description' => 'Administrator of the system.',
             'created_at' => \Carbon\Carbon::now()
         ],[
             'name' => 'personal',
             'display_name' => 'Personal',
-            'description' => 'Personal de la institución.',
+            'description' => 'Employee of the system.',
             'created_at' => \Carbon\Carbon::now()
         ]]);
     }
 }
+ 

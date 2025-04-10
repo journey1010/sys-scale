@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class LaborConditional extends Seeder
 {
@@ -16,35 +17,43 @@ class LaborConditional extends Seeder
                 'name' => 'Docente ordinario',
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now()
-            ],[
+            ],
+            [
                 'name' => 'Docente extraordinario',
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now()
-            ],[
+            ],
+            [
                 'name' => 'Contratado',
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now()
-            ],[
+            ],
+            [
                 'name' => 'Administrativo nombrado',
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now()
-            ],[
+            ],
+            [
                 'name' => 'Administrativo contratado',
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now()
-            ],[
+            ],
+            [
                 'name' => 'Obrero nombrado',
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now()
-            ],[
+            ],
+            [
                 'name' => 'Obrero contratado',
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now()
-            ],[
+            ],
+            [
                 'name' => 'CAS',
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now()
-            ],[
+            ],
+            [
                 'name' => 'Ley SERVIR',
                 'created_at' => Carbon\Carbon::now(),
                 'updated_at' => Carbon\Carbon::now()

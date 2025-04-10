@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SectionResolutionTypeSeeder extends Seeder
 {
@@ -12,8 +13,6 @@ class SectionResolutionTypeSeeder extends Seeder
     public function run()
     {
         DB::table('section_resolution_type')->insert([
-            //
-            //---INICIO SECCIÓN TRAYECTORIA LABORAL
             [
                 'id_section' => DB::table('section')->where('alias', 'trayectoriaLaboral')->first()->id,
                 'id_resolution_type' => DB::table('resolution_type')->where('alias', 'designacion')->first()->id,
@@ -84,12 +83,6 @@ class SectionResolutionTypeSeeder extends Seeder
                 'id_resolution_type' => DB::table('resolution_type')->where('alias', 'nombramiento')->first()->id,
                 'created_at' => \Carbon\Carbon::now()
             ]
-            //---FIN SECCIÓN TRAYECTORIA LABORAL
-            //
-
-
-            //TODO: Agregar las relaciones entre secciones y tipos de resolución faltantes
-
         ]);
     }
 }

@@ -11,14 +11,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(PreDatabaseSeeder::class);
+        // Actualmente en desuso para no generar conflictos con el seeder de la base de datos
+        //$this->call(PreDatabaseSeeder::class);
+        
         $this->call(UsersTableSeeder::class);
         $this->call(RolesTableSeeder::class);
         $this->call(UserRoleTableSeeder::class);
         $this->call(DepartmentTableSeeder::class);
         $this->call(ProvinceTableSeeder::class);
         $this->call(DistrictTableSeeder::class);
-        $this->call(EntriesTableSeeder::class);
+        
+        //Actualmente en desuso para no generar conflictos con el seeder de la base de datos
+        //$this->call(EntriesTableSeeder::class);
+        
         $this->call(ResolutionTypeSeeder::class);
         $this->call(SectionSeeder::class);
         $this->call(SectionResolutionTypeSeeder::class);

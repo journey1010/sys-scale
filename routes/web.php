@@ -1,12 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 Auth::routes();
 
 Route::get('akdemic/login',[ 'uses' => 'Auth\LoginController@getLoginAkdemic' ]);
 Route::get('akdemic/signin-oidc',[ 'uses' => 'Auth\LoginController@getSigninAkdemic' ]);
 Route::get('akdemic/signout-callback-oidc',[ 'uses' => 'Auth\LoginController@getSignoutAkdemic' ]);
 //Route::get('/profile', 'ProfileController@index');
-
 
 
 Route::get('staff_management', 'Profile\StaffManagementController@index')->name('staffManagement');

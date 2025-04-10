@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SectionSeeder extends Seeder
 {
@@ -64,20 +65,14 @@ class SectionSeeder extends Seeder
             ],
             [
                 'name' => 'Producción Intelectual',
-                'alias' => 'produccionintelectual',
+                'alias' => 'produccionIntelectual',
                 'created_at' => \Carbon\Carbon::now()
             ],
             [
                 'name' => 'Desplazamiento de Personal',
-                'alias' => 'desplacement',
+                'alias' => 'desplazamientoPersonal',
                 'created_at' => \Carbon\Carbon::now()
             ]
-
-
-
-
-            //TODO: Agregar otras secciones?
-
         ]);
     }
 }

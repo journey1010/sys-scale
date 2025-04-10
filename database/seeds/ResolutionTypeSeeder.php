@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ResolutionTypeSeeder extends Seeder
 {
@@ -84,20 +85,6 @@ class ResolutionTypeSeeder extends Seeder
                 'flag_vacations' => true,
                 'created_at' => \Carbon\Carbon::now()
             ],
-            [
-                'name' => 'Incorporación de profesores nombrados',
-                'alias' => 'incorporacionProfesoresNombrados',
-                'description' => 'Resoluciones de incorporación de los profesores nombrados interinamente',
-                'flag_vacations' => true,
-                'created_at' => \Carbon\Carbon::now()
-            ],
-            [
-                'name' => 'Incorporación de profesores',
-                'alias' => 'incorporacionProfesores',
-                'description' => 'Resoluciones de incorporación de los profesores',
-                'flag_vacations' => true,
-                'created_at' => \Carbon\Carbon::now()
-            ],
             //
 
             [
@@ -122,30 +109,26 @@ class ResolutionTypeSeeder extends Seeder
                 'created_at' => \Carbon\Carbon::now()
             ],
             [
-                'name' => 'ContratosPersonalesEducacion',
+                'name' => 'Contratos Personales Educacion',
                 'alias' => 'ContratosPersonalesEducacion',
                 'description' => 'Resolución de contratos personales en el sector educación',
                 'flag_vacations' => false,
                 'created_at' => \Carbon\Carbon::now()
             ],
             [
-                'name' => 'ReconocimientoEfectoPago',
+                'name' => 'Reconocimiento Efecto Pago',
                 'alias' => 'reconocimientoEfectoPago',
                 'description' => 'Resolución de reconocimiento de efecto de pago',
                 'flag_vacations' => false,
                 'created_at' => \Carbon\Carbon::now()
             ],
             [
-                'name' => 'TerminoContratoPersonal',
+                'name' => 'Termino Contrato Personal',
                 'alias' => 'terminoContratoPersonal',
                 'description' => 'Resolución de termino de contrato personal',
                 'flag_vacations' => false,
                 'created_at' => \Carbon\Carbon::now()
             ],
-
-            //TODO: Faltan 20+ tipos de resoluciones más que están en el DER
-
-
         ]);
     }
 }
