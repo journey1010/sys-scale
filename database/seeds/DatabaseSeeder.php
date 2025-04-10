@@ -23,14 +23,17 @@ class DatabaseSeeder extends Seeder
         
         //Actualmente en desuso para no generar conflictos con el seeder de la base de datos
         //$this->call(EntriesTableSeeder::class);
-        
-        $this->call(ResolutionTypeSeeder::class);
         $this->call(SectionSeeder::class);
-        $this->call(SectionResolutionTypeSeeder::class);
+        $this->call(DocumentTypeSeeder::class);
+
         $this->call(LicenceTypeSeeder::class);
         $this->call(Dependence::class);
         $this->call(LaborConditional::class);
-        $this->call(AffiliationDocument::class);
-        $this->call(PersonalIdentification::class);
+
+        //Actualmente en desuso para no generar conflictos con el seeder de la base de datos
+        //$this->call(AffiliationDocument::class);
+        
+        //Actualmente en desuso para no generar conflictos con el seeder de la base de datos
+        //$this->call(PersonalIdentification::class);
     }
 }
