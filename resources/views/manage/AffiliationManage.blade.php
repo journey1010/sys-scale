@@ -72,9 +72,7 @@
                         <div class="col-md-8">
                             {{ Form::text('name', null, ['class' => 'form-control', 'style' => '']) }}
                         </div>
-
                     </div>
-
                     <div class="form-group">
                         <div class="col-md-offset-3 col-md-6">
                             {{ Form::submit('Guardar', ['class' => 'btn btn-info', 'style' => '']) }}
@@ -84,7 +82,6 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
-
                 {{ Form::close() }}
             </div>
 
