@@ -15,10 +15,11 @@ use App\Http\Controllers\Controller;
 use Mockery\Exception;
 use Illuminate\Support\Facades\Storage;
 //use crabbly\Fpdf;
-use App\Librerias\fpdf2\fpdf;
-//use PhpOffice\PhpWord\IOFactory;
-//use PhpOffice\PhpWord\PhpWord;
-//use PhpOffice\PhpWord\SimpleType\Jc;
+//use App\Librerias\fpdf2\fpdf;
+//require '../../librerias/fpdf2/fpdf.php';
+use PhpOffice\PhpWord\IOFactory;
+use PhpOffice\PhpWord\PhpWord;
+use PhpOffice\PhpWord\SimpleType\Jc;
 
 class PdfController extends Controller
 {
@@ -31,15 +32,15 @@ class PdfController extends Controller
         try{
           
            //create pdf document
-           $pdf=new FPDF();
-           $pdf->AddPage();
-           $pdf->SetFont('Arial','B',16);
-           $pdf->Cell(40,10, 'Salio Jonny ...DALE (U).....GRITALO!!..');
-           $pdf->Output('ejemplo.pdf','D');
+           //$pdf=new FPDF();
+           //$pdf->AddPage();
+           //$pdf->SetFont('Arial','B',16);
+           //$pdf->Cell(40,10, 'Salio Jonny ...DALE (U).....GRITALO!!..');
+           //$pdf->Output('ejemplo.pdf','D');
 
            // $pdf = new FPDF();
             //echo $id;
-            /*$user = User::find($id);
+            $user = User::find($id);
             $personal = PersonalIdentification::where('id_user',$id)->first();
             $condition = LaborConditional::find($personal['id_labor_conditional'])['name'];
             $dependence = Dependence::find($personal['id_dependence'])['name'];
@@ -206,7 +207,7 @@ class PdfController extends Controller
             }
 
             return response()->download(storage_path('app/public/InformeEscalafonario.docx'));
-            */
+            
         }
         catch(\Exception $e){
             return;
