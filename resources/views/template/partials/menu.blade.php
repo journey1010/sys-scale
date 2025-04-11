@@ -21,7 +21,7 @@
     <li class="has-sub{{ (Request::is('dependence') ? ' active' : '') }}">
         <a href="{{ route('dependence') }}">
             <i class="fa fa-gear"></i>
-            <span>Gestion de Dependencia o Facultad</span>
+            <span>Gestion de Dependencia</span>
         </a>
     </li>
 

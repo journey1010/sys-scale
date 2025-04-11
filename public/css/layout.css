@@ -19,7 +19,7 @@
 }
 
 .sidebar, .sidebar-bg {
-    background: #0078bf; /*unap*/
+    background: #24a87c; /*unap*/
     /*background: #411737; /*upal*/
     /*background: #273ca3;*/
 }
@@ -39,7 +39,7 @@
 }
 
 .sidebar .nav>li.nav-profile {
-    background: #0078bf; /*unap*/
+    background: #6d6d6d; /*unap*/
     /*background: #411737; /*upal*/
     /*background: #323234;*/
     border-bottom: 2px solid white; /*upal*/

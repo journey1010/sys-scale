@@ -53,15 +53,10 @@
             <div class="m-t-20 m-b-20 text-inverse">
                 Si no recuerdas tu contraseña comunicate con IT Services
             </div>
-
-
-
             <hr />
             <p class="text-center">
                 &copy; All Right Reserved {{ date('Y') }} <br>
             </p>
-
-
     </div>
     <!-- end login-content -->
 @endsection
