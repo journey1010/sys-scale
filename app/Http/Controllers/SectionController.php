@@ -9,6 +9,7 @@ use App\Models\Section;
 use App\Models\SectionResolutionType;
 use App\Models\ResolutionType;
 use Alert;
+use Exception;
 
 class SectionController extends Controller
 {

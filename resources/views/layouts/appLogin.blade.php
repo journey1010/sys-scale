@@ -11,7 +11,7 @@
     <meta content="" name="description" />
     <meta content="" name="author" />
 
-    <link href="{{ asset('images/favicon-'.config('constants.temas')[config('constants.general.tema')].'.ico') }}" rel="icon">
+    <link href="{{ asset('images/goreMainLogoWhite.ico') }}" rel="icon">
 
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="{{ asset('assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css') }}" rel="stylesheet" />
@@ -40,38 +40,14 @@
 <!-- end #page-loader -->
 
 <!-- begin #page-container -->
-<div id="page-container" class="fade">
-    <!-- begin login -->
-    <div class="login login-with-news-feed">
-        <!-- begin news-feed -->
-        <div class="news-feed">
-            <div class="news-image">
-                @if(config('constants.general.tema') == 3)
-                    <img src="images/bg-login-akdemic.png" data-id="login-cover-image" alt="" />
-                @else
-                    <img src="images/bg-login.png" data-id="login-cover-image" alt="" />
-                @endif
-            </div>
-            {{--<div class="news-caption">--}}
-                {{--<h4 class="caption-title"><i class="ion-ios-cloud m-r-15 fa-2x pull-left"></i> Announcing the Color Admin app</h4>--}}
-                {{--<p>--}}
-                    {{--Download the Color Admin app for iPhone®, iPad®, and Android™. Lorem ipsum dolor sit amet, consectetur adipiscing elit.--}}
-                {{--</p>--}}
-            {{--</div>--}}
+<div class="container d-flex justify-content-center align-items-center " style="min-height: 100vh; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+    <div>
+        <div class="center-content text-center">
+            @yield('content') <!-- El contenido dinámico estará centrado -->
         </div>
-        <!-- end news-feed -->
-        <!-- begin right-content -->
-        <div class="right-content">
-
-            @yield('content')
-
-        </div>
-        <!-- end right-container -->
     </div>
-    <!-- end login -->
-
 </div>
-<!-- end page container -->
+
 
 <!-- ================== BEGIN BASE JS ================== -->
 <script src="{{ asset('assets/plugins/jquery/jquery-1.9.1.min.js') }}"></script>

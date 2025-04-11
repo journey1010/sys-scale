@@ -5,35 +5,7 @@
     <!-- begin login-header -->
     <div class="login-header">
         <div class="brand">
-            @if(config('constants.general.tema') == 1)
-                <img src="{{ asset('images/login.png') }}" class="img-login"/>
-                <span class=""></span>
-            @elseif (config('constants.general.tema') == 2)
-                <img src="{{ asset('images/uncp-login.svg') }}" class="img-login"/>
-                <span class=""></span>
-                {{--<span class="login-title">{{ config('constants.sistema') }}</span>--}}
-            @elseif (config('constants.general.tema') == 3)
-                <img src="{{ asset('images/akdemic-login.svg') }}" class="img-login"/>
-                <span class=""></span>
-            @elseif (config('constants.general.tema') == 4)
-                <img src="{{ asset('images/unica-login.png') }}" class="img-login"/>
-                <span class=""></span>
-            @elseif (config('constants.general.tema') == 5)
-                <img src="{{ asset('images/undac-login.png') }}" class="img-login"/>
-                <span class=""></span>
-            @elseif (config('constants.general.tema') == 6)
-                <img src="{{ asset('images/unheval-login.png') }}" class="img-login" style="width: 300px;"/>
-                <span class=""></span>
-            @elseif (config('constants.general.tema') == 7)
-                <img src="{{ asset('images/unfv/logo.png') }}" class="img-login" style="height: 100px; width: auto; max-width: 100%"/>
-                <span class=""></span>
-            @elseif (config('constants.general.tema') == 8)
-                <img src="{{ asset('images/logo-upal.png') }}" class="img-login" style="height: 100px; width: auto; max-width: 100%"/>
-                <span class=""></span>
-            @endif
-
-
-            <small>Sistema Escalafonario</small>
+                <img src="{{ asset('images/login.png') }}" class="img-login" style="width: 20rem; height:20rem"/>
         </div>
         <div class="icon">
             <i class="ion-ios-locked"></i>
@@ -86,7 +58,7 @@
 
             <hr />
             <p class="text-center">
-                &copy; All Right Reserved 2023
+                &copy; All Right Reserved {{ date('Y') }} <br>
             </p>
 
 
