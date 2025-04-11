@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class LaborConditional extends Seeder
 {
@@ -13,53 +14,16 @@ class LaborConditional extends Seeder
     public function run()
     {
         $list = [
-            [
-                'name' => 'Docente ordinario',
-                'created_at' => Carbon\Carbon::now(),
-                'updated_at' => Carbon\Carbon::now()
-            ],
-            [
-                'name' => 'Docente extraordinario',
-                'created_at' => Carbon\Carbon::now(),
-                'updated_at' => Carbon\Carbon::now()
-            ],
-            [
-                'name' => 'Contratado',
-                'created_at' => Carbon\Carbon::now(),
-                'updated_at' => Carbon\Carbon::now()
-            ],
-            [
-                'name' => 'Administrativo nombrado',
-                'created_at' => Carbon\Carbon::now(),
-                'updated_at' => Carbon\Carbon::now()
-            ],
-            [
-                'name' => 'Administrativo contratado',
-                'created_at' => Carbon\Carbon::now(),
-                'updated_at' => Carbon\Carbon::now()
-            ],
-            [
-                'name' => 'Obrero nombrado',
-                'created_at' => Carbon\Carbon::now(),
-                'updated_at' => Carbon\Carbon::now()
-            ],
-            [
-                'name' => 'Obrero contratado',
-                'created_at' => Carbon\Carbon::now(),
-                'updated_at' => Carbon\Carbon::now()
-            ],
-            [
-                'name' => 'CAS',
-                'created_at' => Carbon\Carbon::now(),
-                'updated_at' => Carbon\Carbon::now()
-            ],
-            [
-                'name' => 'Ley SERVIR',
-                'created_at' => Carbon\Carbon::now(),
-                'updated_at' => Carbon\Carbon::now()
-            ]
+            ['name' => 'Funcionario - 276', 'created_at' => Carbon::now()],
+            ['name' => 'Funcionario - CAS', 'created_at' => Carbon::now()], 
+            ['name' => 'Funcionario - FAG', 'created_at' => Carbon::now()],
+            ['name' => 'Nombrado - 276', 'creadted_at' =>  Carbon::now()],
+            ['name' => 'CAS - Determinado', 'created_at' => Carbon::now()],
+            ['name' => 'CAS - Indeterminado', 'created_at' => Carbon::now()],
+            ['name' => 'CAS - Cautelar', 'created_at' => Carbon::now()],
+            ['name' => 'CAS - Cosa juzgada', 'created_at' => Carbon::now()]
         ];
-
+        
         DB::table('labor_conditional')->insert($list);
     }
 }

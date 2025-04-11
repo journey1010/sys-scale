@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class DocSeeder extends Seeder
 {
@@ -533,28 +534,58 @@ class DocSeeder extends Seeder
     public function run()
     {  
         try {
-            DB::statement('BEGIN TRANSACTION;');
-            $result = array_merge($this->informacionPersonal, $this->incorporacion, $this->formacionAcademica, $this->experienciaLaboral, $this->movimientosPersonal, $this->compensaciones, $this->evaluacionDesempeno, $this->reconocimientoSancionesDisciplinarias, $this->relacionesLaboralesIndividualesColectivas, $this->seguridadSaludTrabajoBienestarSocial);
-            DB::table('resolution_type')->insert($result);
-            DB::statement('COMMIT;');
-        } catch (\Exception $e){
-            DB::statement('ROLLBACK;');
+            DB::statement('START TRANSACTION;'); // Inicia la transacción
+            $result = array_merge(
+                $this->informacionPersonal,
+                $this->incorporacion,
+                $this->formacionAcademica,
+                $this->experienciaLaboral,
+                $this->movimientosPersonal,
+                $this->compensaciones,
+                $this->evaluacionDesempeno,
+                $this->reconocimientoSancionesDisciplinarias,
+                $this->relacionesLaboralesIndividualesColectivas,
+                $this->seguridadSaludTrabajoBienestarSocial
+            );
+        
+            //DB::table('resolution_type')->insert($result);
+            $this->runSectionResolutionType();
+        
+            DB::statement('COMMIT;'); // Confirma la transacción
+        } catch (\Exception $e) {
+            DB::statement('ROLLBACK;'); // Cancela la transacción si hay un error
+            Log::error('Error inserting data: ' . $e->getMessage());
         }
+        
   
     }
-
-    public function runInformacionPersonal()
+    public function runSectionResolutionType()
     {
-        $id = DB::table('section')->where('alias', 'informacionPersonal')->value('id');
+        $package = [
+            'informacionPersonal' => $this->informacionPersonal,
+            'incorporacion' => $this->incorporacion,
+            'formacionAcademica' => $this->formacionAcademica,
+            'experienciaLaboral' => $this->experienciaLaboral,
+            'movimientosPersonal' => $this->movimientosPersonal,
+            'compensaciones' => $this->compensaciones,
+            'evaluacionDesempeno' => $this->evaluacionDesempeno,
+            'reconocimientoSancionesDisciplinarias' => $this->reconocimientoSancionesDisciplinarias,
+            'relacionesLaboralesIndividualesColectivas' => $this->relacionesLaboralesIndividualesColectivas,
+            'seguridadSaludTrabajoBienestarSocial' => $this->seguridadSaludTrabajoBienestarSocial,
+        ];
+
         $data = [];
-        foreach($this->informacionPersonal as $document) {
-            DB::table('resolution_type')->where('alias', $document['alias'])->value('id');
-            $data[] = [
-                'id_section' => $id,
-                'id_resolution_type' => $document['id'],
-                'created_at' => Carbon::now()
-            ];
+        foreach($package as $key => $value){
+            $id = DB::table('section')->where('alias', $key)->value('id');
+            foreach($value as $document){
+                $resolutionId  = DB::table('resolution_type')->where('alias', $document['alias'])->value('id');
+                $data[] = [
+                    'id_section' => $id,
+                    'id_resolution_type' => $resolutionId,
+                    'created_at' => Carbon::now()
+                ];
+            }
         }
-        DB::table('document_type')->insert($this->informacionPersonal);
+        DB::table('section_resolution_type')->insert($data);
     }
 }
