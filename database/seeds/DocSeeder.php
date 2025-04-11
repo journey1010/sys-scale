@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
-class SectionResolutionTypeSeeder extends Seeder
+class DocSeeder extends Seeder
 {
     public $informacionPersonal;
     public $incorporacion;

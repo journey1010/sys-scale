@@ -22,9 +22,9 @@ class SectionSeeder extends Seeder
             ['name' => 'Compensaciones', 'alias' => 'compensaciones', 'created_at' => Carbon::now()],
             ['name' => 'Evaluación de desempeño, progresión en la carrera y desplazamiento', 'alias' => 'EvaluacionDesempeñoProgresiónCarreraDesplazamiento', 'created_at' => Carbon::now()],
             ['name' => 'Reconocimiento y sanciones disciplinarias', 'alias' => 'reconocimientoSancionesDisciplinarias', 'created_at' => Carbon::now()],
-            ['name' => 'Relaciones laborales individuales y colectivas', 'alias' => 'relacionesLaboralesIndividualesColectivas'],
+            ['name' => 'Relaciones laborales individuales y colectivas', 'alias' => 'relacionesLaboralesIndividualesColectivas', 'created_at' => Carbon::now()],
             ['name' => 'Seguridad y Salud en el Trabajo (SST) y bienestar social', 'alias' => 'seguridadSaludTrabajoBienestarSocial', 'created_at' => Carbon::now()],
-            ['name' => 'Desvinculación', 'alias' => 'desvinculacion'],
+            ['name' => 'Desvinculación', 'alias' => 'desvinculacion', 'created_at' => Carbon::now()],
             ['name' => 'Otros', 'alias' => 'otros', 'created_at' => Carbon::now()]
         ]);
     }

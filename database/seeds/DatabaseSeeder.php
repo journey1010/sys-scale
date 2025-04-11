@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use PhpParser\Comment\Doc;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,7 +25,7 @@ class DatabaseSeeder extends Seeder
         //Actualmente en desuso para no generar conflictos con el seeder de la base de datos
         //$this->call(EntriesTableSeeder::class);
         $this->call(SectionSeeder::class);
-        $this->call(DocumentTypeSeeder::class);
+        $this->call(DocSeeder::class);
 
         $this->call(LicenceTypeSeeder::class);
         $this->call(Dependence::class);
