@@ -20,7 +20,6 @@ Route::group(['middleware' => ['role:admin|personal']], function () {
     Route::get('/', 'HomeController@index')->name('/');
     Route::get('/index', 'HomeController@index')->name('/');
 
-
     Route::prefix('personal_identification')->namespace('Profile')->group(function () {
         Route::get('/index/{id?}', 'PersonalIdentificationController@index')->name('personalIdentificationIndex');
         Route::get('/sheet/{id?}', 'PersonalIdentificationController@sheet')->name('personalIdentificationSheet');
@@ -34,7 +33,6 @@ Route::group(['middleware' => ['role:admin|personal']], function () {
         Route::get('/getDistricts', 'PersonalIdentificationController@getDistricts')->name('personalIdentificationGetDistricts');
     });
 
-
     Route::prefix('entries')->namespace('Profile')->group(function () {
         Route::get('/index/{id?}', 'EntryController@index')->name('entriesIndex');
         Route::get('/detail/{id?}', 'EntryController@detail')->name('entriesDetail');
@@ -42,12 +40,6 @@ Route::group(['middleware' => ['role:admin|personal']], function () {
         Route::post('/edit', 'EntryController@editPost')->name('entriesEditPost');
         Route::get('/create/{user_id?}', 'EntryController@create')->name('entriesCreate');
         Route::post('/create', 'EntryController@createPost')->name('entriesCreatePost');
-
-        //MAQUETADO
-//        Route::get('resolutions', function () {
-//            return view('entry/resolutionList');
-//        })->name('entriesResolutions');
-        //FIN MAQUETADO
     });
 
     Route::prefix('academic')->namespace('Profile')->group(function () {
@@ -64,13 +56,6 @@ Route::group(['middleware' => ['role:admin|personal']], function () {
 
     Route::prefix('career')->namespace('Profile')->group(function () {
         Route::get('/index/{id?}', 'CareerPathController@index')->name('careerIndex');
-
-        //MAQUETADO
-//        Route::get('/resolutions', function () {
-//            return view('careerPath/resolutionList');
-//        })->name('careerResolutions');
-        //FIN MAQUETADO
-
     });
 
     Route::prefix('retirement')->namespace('Profile')->group(function () {
@@ -119,7 +104,6 @@ Route::group(['middleware' => ['role:admin|personal']], function () {
         Route::get('/special_license/edit/{id}', 'LicenseController@editSpecialLicense')->name('speciallicense.edit.get');
         Route::post('/special_license/edit', 'LicenseController@editSpecialLicensePost')->name('speciallicense.edit.post');
         Route::post('/special_license/delete', 'LicenseController@deleteSpecialLicense');
-
     });
 
     Route::prefix('other')->namespace('Profile')->group(function () {

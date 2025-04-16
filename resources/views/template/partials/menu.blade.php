@@ -52,7 +52,7 @@
             <li class="{{ (Request::is('reports/escalafon') ? 'active' : '') }}"><a href="{{ route('getReportsEscalafon') }}">Escalafonario</a></li>
             <!--<li class="{{ (Request::is('reports/authorities') ? 'active' : '') }}"><a href="{{ route('getReportsAuthorities') }}">Autoridades</a></li>-->
             <li class="{{ (Request::is('reports/displacements') ? 'active' : '') }}"><a href="{{ route('getReportsDisplacements') }}">Desplazamientos</a></li>
-            <li class="{{ (Request::is('reports/constancy') ? 'active' : '') }}"><a href="{{ route('getReportsConstancies') }}">Constancias</a></li>
+            <!--<li class="{{ (Request::is('reports/constancy') ? 'active' : '') }}"><a href="{{ route('getReportsConstancies') }}">Constancias</a></li>-->
         </ul>
     </li>
 @elseif(Auth::user()->hasRole(['personal']))

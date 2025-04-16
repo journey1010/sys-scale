@@ -66,7 +66,7 @@
             <div class="navbar-header navh-tu">
 
                 @if(config('constants.general.tema') == 1)
-                    <a href="{{ route('/') }}" class="navbar-brand" style="display: inline-flex"> <img src="{{ asset('images/logo.png') }}" class="img-logo"/> <b>Escalafon</b> Admin</a>
+                    <a href="{{ route('/') }}" class="navbar-brand" style="display: inline-flex"> <img src="{{ asset('images/logo.png') }}" class="img-logo"/> <b style="margin-right: 8px">Escalafon</b>      Admin</a>
                 @elseif(config('constants.general.tema') == 2)
                     <a href="{{ route('/') }}" class="navbar-brand"> <img src="{{ asset('images/uncp.svg') }}" class="img-logo"/></a>
                 @elseif(config('constants.general.tema') == 3)

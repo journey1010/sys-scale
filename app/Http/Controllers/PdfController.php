@@ -217,12 +217,7 @@ class PdfController extends Controller
                 array('align' => 'right'));
 
             $objectWriter = IOFactory::createWriter($phpWord, 'Word2007');
-            try {
-                $objectWriter->save(storage_path('app/public/InformeEscalafonario.docx'));
-            } catch (Exception $e) {
-                return redirect('/');
-            }
-
+            $objectWriter->save(storage_path('app/public/InformeEscalafonario.docx'));
             return response()->download(storage_path('app/public/InformeEscalafonario.docx'))->deleteFileAfterSend(true);
         }
         catch(\Exception $e){
