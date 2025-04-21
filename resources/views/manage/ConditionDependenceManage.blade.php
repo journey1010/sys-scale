@@ -64,7 +64,7 @@
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Nueva Dependencia / Facultad</h4>
+                    <h4 class="modal-title">Nueva Dependencia</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -104,7 +104,7 @@
                 {!! Form::hidden('invisible_update',null , array('id' => 'invisible_update')) !!}
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Editar datos de Dependencia / Facultad</h4>
+                    <h4 class="modal-title">Editar datos de Dependencia</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
