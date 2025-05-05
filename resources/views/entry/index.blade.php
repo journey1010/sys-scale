@@ -25,45 +25,6 @@
             </div>
             <div class="panel-body">
                 <div class="">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <div class="col-xs-6">
-                                <h4>Tipos de Resoluciones de Incorporación</h4>
-                            </div>
-                            <div class="col-xs-6">
-                                <div class="pull-right">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Descripción</th>
-                                    <th>Vínculo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if($model->resolutions != null)
-                                    @foreach($model->resolutions as $resolution)
-                                        <tr>
-                                            <td>{{ $resolution->description }}</td>
-                                            <td>
-                                                <a href="{{ route('getResolutions', [$resolution->id , $model->user_id, $resolution->section_id]) }}" class="btn btn-info btn-xs">ver</a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @else
-                                    <tr>
-                                        <td colspan="2" class="text-center">No hay resoluciones para mostrar.</td>
-                                    </tr>
-                                @endif
-                            </tbody>
-                        </table>
-                    </div>
-
                     <h4>Anexos &nbsp<button type="button" class="btn btn-sm btn-default addButton" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i></button></h4>
                     <table id="data-table" class="table table-striped table-bordered" style="margin-bottom: 100px">
                         <thead>
