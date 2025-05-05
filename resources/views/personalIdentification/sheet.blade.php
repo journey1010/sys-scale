@@ -5,7 +5,7 @@
     <ol class="breadcrumb pull-right">
         <li><a href="{{ route('/') }}">Inicio</a></li>
         <li><a href="{{ route('staffManagement') }}">Gestión de Personal</a></li>
-        <li><a href="{{ route('personalIdentificationIndex') }}/{{ $id }}">Identificación Personal</a></li>
+        <li><a href="{{ route('personalIdentificationIndex') }}/{{ $id }}">Información personal y familiar</a></li>
         <li class="active">Ficha de Datos</li>
     </ol>
 
@@ -22,7 +22,7 @@
 
                 <h4 class="panel-title">
                     <a href="{{ url('personal_identification/index/'.$id) }}" class="btn btn-xs btn-icon btn-circle btn-success"><i class="fa fa-arrow-left"></i></a>
-                            Identificación Personal
+                        Información personal y familiar
                 </h4>
 
 

@@ -5,7 +5,7 @@
     <ol class="breadcrumb pull-right">
         <li><a href="{{ route('/') }}">Inicio</a></li>
         <li><a href="{{ route('staffManagement') }}">Gestión de Personal</a></li>
-        <li class="active">Identificación Personal</li>
+        <li class="active">Información personal y familiar</li>
     </ol>
 
     @include('template.partials.subMenuUser')
@@ -20,7 +20,7 @@
                 </div>
                 <h4 class="panel-title">
                     <a href="{{ url('staff_management') }}" class="btn btn-xs btn-icon btn-circle btn-success"><i class="fa fa-arrow-left"></i></a>
-                    Identificación Personal
+                    Información personal y familiar
                 </h4>
             </div>
 

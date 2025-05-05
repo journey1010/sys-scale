@@ -4,7 +4,7 @@
 
     <ol class="breadcrumb pull-right">
         <li><a href="javascript:;">Inicio</a></li>
-        <li><a href="javascript:;">Formación Académica</a></li>
+        <li><a href="javascript:;">Formación académica y capacitación/a></li>
         <li class="active">Maestrías y Doctorados</li>
     </ol>
 

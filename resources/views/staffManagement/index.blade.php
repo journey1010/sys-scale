@@ -126,8 +126,8 @@
                                     <div class="btn-group m-r-0 m-b-0">
                                         <a href="javascript:;" data-toggle="dropdown" class="btn btn-xs btn-info dropdown-toggle">Gestionar <span class="caret"></span></a>
                                         <ul class="dropdown-menu" style="left: unset; right: 0">
-                                            <li><a href="{{ route('personalIdentificationIndex', $user->id) }}">Identificación Personal</a></li>
-                                            <li><a href="{{ route('allStudies', $user->id) }}">Formación Académica</a></li>
+                                            <li><a href="{{ route('personalIdentificationIndex', $user->id) }}">Información personal y familiar</a></li>
+                                            <li><a href="{{ route('allStudies', $user->id) }}">Formación académica y capacitación</a></li>
                                             <li><a href="{{ route('entriesIndex', $user->id) }}">Ingreso o Reingreso</a></li>
                                             <li><a href="{{ route('careerIndex', $user->id) }}">Trayectoria Laboral</a></li>
                                             <li><a href="{{ route('getAssignments', $user->id) }}">Asignaciones e incentivos temporales, retenciones judiciales y pagos indebidos</a></li>

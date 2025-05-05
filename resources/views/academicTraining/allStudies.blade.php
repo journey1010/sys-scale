@@ -21,7 +21,7 @@
 <ol class="breadcrumb pull-right">
     <li><a href="{{ route('/') }}">Inicio</a></li>
     <li><a href="{{ route('staffManagement') }}">Gestión de Personal</a></li>
-    <li class="active">Formación Académica</li>
+    <li class="active">Formación académica y capacitación</li>
 </ol>
 
     @include('template.partials.subMenuUser')
@@ -31,7 +31,7 @@
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a href="{{ url('staff_management') }}" class="btn btn-xs btn-icon btn-circle btn-success"><i class="fa fa-arrow-left"></i></a>
-                    Formación Académica
+                    Formación académica y capacitación
                 </h4>
                 <input type="hidden" name="id_user_academic" id="id_user_academic" value="{{ $objUser->id }}"/>
             </div>

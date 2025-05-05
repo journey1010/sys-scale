@@ -4,7 +4,7 @@
 
     <ol class="breadcrumb pull-right">
         <li><a href="{{ route('/') }}">Inicio</a></li>
-        <li><a href="{{ route('allStudies', $model->id_user) }}">Formación Académica </a></li>
+        <li><a href="{{ route('allStudies', $model->id_user) }}">Formación académica y capacitación</a></li>
         <li class="active">Título Profesional</li>
     </ol>
 
