@@ -5,7 +5,7 @@
     <ol class="breadcrumb pull-right">
         <li><a href="{{ route('/') }}">Inicio</a></li>
         <li><a href="{{ route('staffManagement') }}">Gestión de Personal</a></li>
-        <li><a href="{{ route('licenseIndex', ['id' => $resolution->id_user]) }}">Licencias y Vacaciones</a></li>
+        <li><a href="{{ route('licenseIndex', ['id' => $resolution->id_user]) }}">Movimientos del Personal</a></li>
         <li class="active">Editar</li>
     </ol>
 

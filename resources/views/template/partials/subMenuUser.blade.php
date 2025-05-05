@@ -4,15 +4,15 @@
         <ul class="dropdown-menu">
             <li><a href="{{ route('personalIdentificationIndex', Session::get('userId')) }}">Información personal y familiar</a></li>
             <li><a href="{{ route('allStudies', Session::get('userId')) }}">Formación académica y capacitación</a></li>
-            <li><a href="{{ route('entriesIndex', Session::get('userId')) }}">Ingreso o Reingreso</a></li>
-            <li><a href="{{ route('careerIndex', Session::get('userId')) }}">Trayectoria Laboral</a></li>
-            <li><a href="{{ route('getAssignments', Session::get('userId')) }}">Asignaciones e incentivos temporales, retenciones judiciales y pagos indebidos</a></li>
-            <li><a href="{{ route('renuncias', Session::get('userId')) }}">Renuncia y Liquidación</a></li>
-            <li><a href="{{ route('displacement', Session::get('userId')) }}">Desplazamiento de personal</a></li>
+            <li><a href="{{ route('entriesIndex', Session::get('userId')) }}">Incorporación</a></li>
+            <li><a href="{{ route('careerIndex', Session::get('userId')) }}">Experiencia laboral</a></li>
+            <li><a href="{{ route('getAssignments', Session::get('userId')) }}">Compensaciones</a></li>
+            <li><a href="{{ route('renuncias', Session::get('userId')) }}">Desvinculación</a></li>
+            <li><a href="{{ route('displacement', Session::get('userId')) }}">Evaluación de desempeño, progresión en la carrera y desplazamiento</a></li>
             <li><a href="{{ route('retirementIndex',Session::get('userId')) }}">Retiro y régimen pensionario</a></li>
-            <li><a href="{{ route('permitIndex',Session::get('userId')) }}">Premios y estímulos</a></li>
+            <li><a href="{{ route('permitIndex',Session::get('userId')) }}">Reconocimientos y sanciones disciplinarias</a></li>
             {{--<li><a href="{{ route('sanctionIndex',$user->id) }}">Sanciones</a></li>--}}
-            <li><a href="{{ route('licenseIndex', [ 'id' => Session::get('userId')] ) }}">Licencias y Vacaciones</a></li>
+            <li><a href="{{ route('licenseIndex', [ 'id' => Session::get('userId')] ) }}">Movimientos del Personal</a></li>
             <li><a href="{{ route('evaluacion', Session::get('userId')) }}">Documentos de Evaluaciones</a></li>
             <li><a href="{{ route('produccionintelectual', Session::get('userId')) }}">Documentos de Producción Intelectual</a></li>
             <li><a href="{{ route('otherIndex', Session::get('userId')) }}">Otros</a></li>

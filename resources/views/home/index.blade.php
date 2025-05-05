@@ -11,7 +11,7 @@
         {{--<a href="#">Retiro y régimen pensionario</a>--}}
         {{--<a href="#">Permisos y estímulos</a>--}}
         {{--<a href="#">Sanciones</a>--}}
-        {{--<a href="#">Licencias y Vacaciones</a>--}}
+        {{--<a href="#">Movimientos del Personal</a>--}}
         {{--<a href="#">Otros</a>--}}
     {{--</div>--}}
 

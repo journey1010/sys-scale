@@ -5,7 +5,7 @@
     <ol class="breadcrumb pull-right">
         <li><a href="{{ route('/') }}">Inicio</a></li>
         <li><a href="{{ route('staffManagement') }}">Gestión de Personal</a></li>
-        <li class="active">Trayectoria Laboral</li>
+        <li class="active">Experiencia laboral</li>
     </ol>
 
     @include('template.partials.subMenuUser')
@@ -22,7 +22,7 @@
                     <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning"
                        data-click="panel-collapse"><i class="fa fa-minus"></i></a>
                 </div>
-                <h4 class="panel-title">Trayectoria Laboral</h4>
+                <h4 class="panel-title">Experiencia laboral</h4>
             </div>
 
             <div class="panel-body">
@@ -32,7 +32,7 @@
                         <div class="col-xs-6">
                             <h4>
                                 <a href="{{ url('staff_management') }}" class="btn btn-xs btn-icon btn-circle btn-success"><i class="fa fa-arrow-left"></i></a>
-                                Listado de documentos de Trayectoria Laboral
+                                Listado de documentos de Experiencia laboral
                             </h4>
                         </div>
                         <div class="col-xs-6 text-right">

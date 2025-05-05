@@ -5,7 +5,7 @@
     <ol class="breadcrumb pull-right">
         <li><a href="{{ route('/') }}">Inicio</a></li>
         <li><a href="{{ route('staffManagement') }}">Gestión de Personal</a></li>
-        <li class="active">Licencias y Vacaciones</li>
+        <li class="active">Movimientos del Personal</li>
     </ol>
 
     @include('template.partials.subMenuUser')
@@ -23,7 +23,7 @@
                 </div>
                 <h4 class="panel-title">
                     <a href="{{ url('staff_management') }}" class="btn btn-xs btn-icon btn-circle btn-success"><i class="fa fa-arrow-left"></i></a>
-                    Licencias y vacaciones
+                    Movimientos del Personal
                 </h4>
             </div>
 
@@ -34,7 +34,7 @@
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <h4>Tipos de licencias</h4>
-                                {{--<h4>Listado de documentos de Licencias y Vacaciones</h4>--}}
+                                {{--<h4>Listado de documentos de Movimientos del Personal</h4>--}}
                             </div>
                             <div class="col-xs-6">
                                 <div class="pull-right">
