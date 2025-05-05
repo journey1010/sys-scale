@@ -12,7 +12,7 @@
             <li><a href="{{ route('permitIndex',Session::get('userId')) }}">Reconocimientos y sanciones disciplinarias</a></li>
             <li><a href="{{ route('evaluacion', Session::get('userId')) }}">Relaciones laborales individuales y colectivas</a></li>
             <li><a href="{{ route('produccionintelectual', Session::get('userId')) }}">Seguridad y Salud en el Trabajo (SST) y bienestar social</a></li>
-            <li><a href="{{ route('retirementIndex',Session::get('userId')) }}">Retiro y régimen pensionario</a></li>
+            {{-- <li><a href="{{ route('retirementIndex',Session::get('userId')) }}">Retiro y régimen pensionario</a></li> --}}
             {{--<li><a href="{{ route('sanctionIndex',$user->id) }}">Sanciones</a></li>--}}
             <li><a href="{{ route('renuncias', Session::get('userId')) }}">Desvinculación</a></li>
             <li><a href="{{ route('otherIndex', Session::get('userId')) }}">Otros</a></li>

@@ -134,7 +134,7 @@
                                             <li><a href="{{ route('getAssignments', $user->id) }}">Compensaciones</a></li>
                                             <li><a href="{{ route('displacement', $user->id) }}">Evaluación de desempeño, progresión en la carrera y desplazamiento</a></li>
                                             <li><a href="{{ route('permitIndex',$user->id) }}">Reconocimientos y sanciones disciplinarias</a></li>
-                                            <li><a href="{{ route('retirementIndex',$user->id) }}">Retiro y régimen pensionario</a></li>
+                                            {{-- <li><a href="{{ route('retirementIndex',$user->id) }}">Retiro y régimen pensionario</a></li>  --}}
                                             {{--<li><a href="{{ route('sanctionIndex',$user->id) }}">Sanciones</a></li>--}}
                                             <li><a href="{{ route('evaluacion', $user->id) }}">Relaciones laborales individuales y colectivas</a></li>
                                             <li><a href="{{ route('produccionintelectual', $user->id) }}">Seguridad y Salud en el Trabajo (SST) y bienestar social</a></li>
