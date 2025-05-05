@@ -27,46 +27,7 @@
 
             <div class="panel-body">
 
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <div class="col-xs-6">
-                            <h4>
-                                <a href="{{ url('staff_management') }}" class="btn btn-xs btn-icon btn-circle btn-success"><i class="fa fa-arrow-left"></i></a>
-                                Listado de documentos de Experiencia laboral
-                            </h4>
-                        </div>
-                        <div class="col-xs-6 text-right">
-                        </div>
-                    </div>
-                </form>
-
                 <div class="table-responsive">
-
-                    <table class="table table-striped table-bordered">
-                        <thead>
-                        <tr>
-                            <th>Descripción</th>
-                            <th>Vínculo</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @if($model->resolutions != null)
-                            @foreach($model->resolutions as $resolution)
-                                <tr>
-                                    <td>{{ $resolution->description }}</td>
-                                    <td>
-                                        <a href="{{ route('getResolutions', [$resolution->id , $model->user_id, $resolution->section_id]) }}" class="btn btn-info btn-xs">ver</a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        @else
-                            <tr>
-                                <td colspan="2" class="text-center">No hay Resoluciones para mostrar.</td>
-                            </tr>
-                        @endif
-                        </tbody>
-                    </table>
-
                     <h4>Anexos &nbsp<button type="button" class="btn btn-sm btn-default addButton" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i></button></h4>
                     <table id="data-table" class="table table-striped table-bordered" style="margin-bottom: 100px">
                         <thead>
