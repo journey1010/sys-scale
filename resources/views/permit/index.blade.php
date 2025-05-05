@@ -24,7 +24,7 @@
                 </div>
                 <h4 class="panel-title">
                     <a href="{{ url('staff_management') }}" class="btn btn-xs btn-icon btn-circle btn-success"><i class="fa fa-arrow-left"></i></a>
-                    Permisos y estímulos
+                    Reconocimientos y sanciones disciplinarias
                 </h4>
             </div>
 
