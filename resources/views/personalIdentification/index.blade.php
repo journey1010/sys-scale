@@ -115,7 +115,7 @@
                             </tr>
 
                             <tr>
-                                <td>Documento de Presentaci&oacute;n</td>
+                                <td>Documento de Identidad</td>
                                 @if(is_null($Afill->presentatio_document))
                                     <th><label class="label label-danger">NO ADJUNTO </label></th>
                                     <td>{{ Form::file('presentatio_document', array('placeholder' => '','class' => 'form-control-file', 'accept' => '*')) }}</td>

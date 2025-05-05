@@ -4,10 +4,10 @@
     <ol class="breadcrumb pull-right">
         <li><a href="{{ route('/') }}">Inicio</a></li>
         <li><a href="{{ route('staffManagement') }}">Gestión de Personal</a></li>
-        <li><a href="{{ route('entriesIndex', $model->id_user) }}">Ingresos y Reingresos</a></li>
+        <li><a href="{{ route('entriesIndex', $model->id_user) }}">Incorporación</a></li>
         <li class="active">Editar</li>
     </ol>
-    <h1 class="page-header">Ingresos y Reingresos <small>Editar</small></h1>
+    <h1 class="page-header">Incorporación<small>Editar</small></h1>
 
     <div class="row">
         <div class="panel panel-inverse">

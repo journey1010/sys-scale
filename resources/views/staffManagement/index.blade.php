@@ -127,18 +127,18 @@
                                         <a href="javascript:;" data-toggle="dropdown" class="btn btn-xs btn-info dropdown-toggle">Gestionar <span class="caret"></span></a>
                                         <ul class="dropdown-menu" style="left: unset; right: 0">
                                             <li><a href="{{ route('personalIdentificationIndex', $user->id) }}">Información personal y familiar</a></li>
-                                            <li><a href="{{ route('allStudies', $user->id) }}">Formación académica y capacitación</a></li>
                                             <li><a href="{{ route('entriesIndex', $user->id) }}">Incorporación</a></li>
+                                            <li><a href="{{ route('allStudies', $user->id) }}">Formación académica y capacitación</a></li>
                                             <li><a href="{{ route('careerIndex', $user->id) }}">Experiencia laboral</a></li>
-                                            <li><a href="{{ route('getAssignments', $user->id) }}">Compensaciones</a></li>
-                                            <li><a href="{{ route('renuncias', $user->id) }}">Desvinculación</a></li>
-                                            <li><a href="{{ route('displacement', $user->id) }}">Evaluación de desempeño, progresión en la carrera y desplazamiento</a></li>
-                                            <li><a href="{{ route('retirementIndex',$user->id) }}">Retiro y régimen pensionario</a></li>
-                                            <li><a href="{{ route('permitIndex',$user->id) }}">Reconocimientos y sanciones disciplinarias</a></li>
-                                            {{--<li><a href="{{ route('sanctionIndex',$user->id) }}">Sanciones</a></li>--}}
                                             <li><a href="{{ route('licenseIndex', [ 'id' => $user->id] ) }}">Movimientos del Personal</a></li>
-                                            <li><a href="{{ route('evaluacion', $user->id) }}">Documentos de Evaluaciones</a></li>
-                                            <li><a href="{{ route('produccionintelectual', $user->id) }}">Documentos de Producción Intelectual</a></li>
+                                            <li><a href="{{ route('getAssignments', $user->id) }}">Compensaciones</a></li>
+                                            <li><a href="{{ route('displacement', $user->id) }}">Evaluación de desempeño, progresión en la carrera y desplazamiento</a></li>
+                                            <li><a href="{{ route('permitIndex',$user->id) }}">Reconocimientos y sanciones disciplinarias</a></li>
+                                            <li><a href="{{ route('retirementIndex',$user->id) }}">Retiro y régimen pensionario</a></li>
+                                            {{--<li><a href="{{ route('sanctionIndex',$user->id) }}">Sanciones</a></li>--}}
+                                            <li><a href="{{ route('evaluacion', $user->id) }}">Relaciones laborales individuales y colectivas</a></li>
+                                            <li><a href="{{ route('produccionintelectual', $user->id) }}">Seguridad y Salud en el Trabajo (SST) y bienestar social</a></li>
+                                            <li><a href="{{ route('renuncias', $user->id) }}">Desvinculación</a></li>
                                             <li><a href="{{ route('otherIndex', $user->id) }}">Otros</a></li>
                                         </ul>
                                     </div>

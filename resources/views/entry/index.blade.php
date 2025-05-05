@@ -5,7 +5,7 @@
     <ol class="breadcrumb pull-right">
         <li><a href="{{ route('/') }}">Inicio</a></li>
         <li><a href="{{ route('staffManagement') }}">Gestión de Personal</a></li>
-        <li class="active">Ingresos y Reingresos</li>
+        <li class="active">Incorporación</li>
     </ol>
 
     @include('template.partials.subMenuUser')
@@ -20,7 +20,7 @@
                 </div>
                 <h4 class="panel-title">
                     <a href="{{ url('staff_management') }}" class="btn btn-xs btn-icon btn-circle btn-success"><i class="fa fa-arrow-left"></i></a>
-                    Ingresos y Reingresos
+                    Incorporación
                 </h4>
             </div>
             <div class="panel-body">
@@ -28,7 +28,7 @@
                     <form class="form-horizontal">
                         <div class="form-group">
                             <div class="col-xs-6">
-                                <h4>Tipos de Resoluciones de Ingresos y Reingresos</h4>
+                                <h4>Tipos de Resoluciones de Incorporación</h4>
                             </div>
                             <div class="col-xs-6">
                                 <div class="pull-right">

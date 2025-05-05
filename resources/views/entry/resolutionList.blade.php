@@ -2,7 +2,7 @@
     <ol class="breadcrumb pull-right">
         <li><a href="{{ route('/') }}">Inicio</a></li>
         <li><a href="{{ route('staffManagement') }}">Gestión de Personal</a></li>
-        <li class="active">Ingresos y Reingresos</li>
+        <li class="active">Incorporación</li>
     </ol>
 
     @include('template.partials.subMenuUser')
@@ -15,7 +15,7 @@
                     <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
                     <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
                 </div>
-                <h4 class="panel-title">Ingresos y Reingresos</h4>
+                <h4 class="panel-title">Incorporación</h4>
             </div>
             <div class="panel-body">
                 <div class="row">
