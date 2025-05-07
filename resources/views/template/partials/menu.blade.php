@@ -70,7 +70,7 @@
         </a>
         <ul class="sub-menu">
                     <li class="{{ (Request::is('*/primary_education') ? 'active' : '') }}"><a href="{{url('academic/primary_education')}}">Educación Primaria</a></li>
-            <li class="{{ (Request::is('*/secondary_education') ? 'active' : '') }}"><a href="{{url('academic/secondary_education')}}">Educación Secundaria</a></li>
+            <li class="{{    (Request::is('*/secondary_education') ? 'active' : '') }}"><a href="{{url('academic/secondary_education')}}">Educación Secundaria</a></li>
             <li class="{{ (Request::is('*/university_education') ? 'active' : '') }}"><a href="{{url('academic/university_education')}}">Educación Superior</a></li>
             <li class="{{ (Request::is('*/professional_title') ? 'active' : '') }}"><a href="{{url('academic/professional_title')}}">Título Profesional</a></li>
             {{--<li class="{{ (Request::is('*/tuition_information') ? 'active' : '') }}"><a href="{{url('academic/tuition_information')}}">Colegiatura</a></li>--}}

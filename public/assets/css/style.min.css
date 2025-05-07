@@ -506,12 +506,12 @@ label {
 .sidebar .nav>li.active>a,
 .sidebar .nav>li.active>a:focus,
 .sidebar .nav>li.active>a:hover {
-    color: #fff;
-    background: #4CD964
+    color: #4CD964;
+    background: #fff
 }
 .sidebar .nav>li.active>a .badge.badge-success,
 .sidebar .nav>li.active>a .label.label-success {
-    background: #39a34b
+    background: #fff
 }
 .sidebar .nav>li>a i {
     text-align: center;
@@ -572,7 +572,7 @@ label {
     padding: 3px 20px;
     display: block;
     font-weight: 300;
-    color: #43ef0a;
+    color: #727cb6;
     text-decoration: none;
     position: relative
 }
@@ -581,7 +581,7 @@ label {
 .sidebar .sub-menu>li.active>a:hover,
 .sidebar .sub-menu>li>a:focus,
 .sidebar .sub-menu>li>a:hover {
-    color: #fff
+    color: #8869A5
 }
 .sidebar .nav>li li.has-sub.active>a {
     color: #888
@@ -614,7 +614,7 @@ label {
 .sidebar .nav>li.nav-profile {
     padding: 20px;
     color: #fff;
-    background: #111
+    background: #8095CE !important;
 }
 .sidebar .nav>li.nav-profile a {
     padding: 0
@@ -640,7 +640,7 @@ label {
 }
 .sidebar .nav>li.nav-profile .info small {
     display: block;
-    color: #888
+    color: white !important;
 }
 .sidebar .nav>li.nav-widget {
     padding: 10px 20px

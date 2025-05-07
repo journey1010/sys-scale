@@ -34,17 +34,25 @@
     @endif
 
 </head>
-<body class="pace-top bg-white">
-<!-- begin #page-loader -->
+<body class="pace-top" style="position: relative; min-height: 100vh; background: url('{{ asset('images/fondoLogin.jpg') }}') no-repeat center center fixed; background-size: cover;">
+
+<div style="
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(173, 216, 230, 0.5); /* pastel blue with transparency */
+    z-index: 1;
+"></div><!-- begin #page-loader -->
 <div id="page-loader" class="fade in"><span class="spinner"></span></div>
 <!-- end #page-loader -->
 
 <!-- begin #page-container -->
-<div class="container d-flex justify-content-center align-items-center " style="min-height: 100vh; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
-    <div>
-        <div class="center-content text-center">
-            @yield('content') <!-- El contenido dinámico estará centrado -->
-        </div>
+<div class="container d-flex justify-content-center align-items-center"
+     style="position: relative; z-index: 2; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+    <div class="center-content text-center bg-white" style="padding: 40px; box-shadow: 0 0 20px rgba(0,0,0,0.3); border-radius: 8px;">
+        @yield('content')
     </div>
 </div>
 

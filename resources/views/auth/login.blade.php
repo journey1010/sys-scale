@@ -55,7 +55,7 @@
             </div>
             <hr />
             <p class="text-center">
-                &copy; All Right Reserved {{ date('Y') }} <br>
+                &copy; Todos los derechos reservados {{ date('Y') }} <br>
             </p>
     </div>
     <!-- end login-content -->
