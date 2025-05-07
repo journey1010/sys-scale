@@ -1,27 +1,27 @@
 @if(Auth::user()->hasRole(['admin']))
     <li class="has-sub{{ (Request::is('staff_management') ? ' active' : '') }}">
         <a href="{{ route('staffManagement') }}">
-            <i class="fa fa-gear"></i>
+            <i class="fa fa-gear"  style="color: #8095CE ;"></i>
             <span>Gestion del Personal</span>
         </a>
     </li>
     <li class="has-sub{{ (Request::is('resolution_type/index') ? ' active' : '') }}">
         <a href="{{ route('getResolutionTypes') }}">
-            <i class="fa fa-clone"></i>
+            <i class="fa fa-clone"  style="color: #8095CE ;"></i>
             <span>Tipo Resolusión</span>
         </a>
     </li>
 
     <li class="has-sub{{ (Request::is('depcon/laborconditional') ? ' active' : '') }}">
-        <a href="{{ route('laborconditional') }}">
-            <i class="fa fa-gear"></i>
+        <a href="{{ route('laborconditional') }}" style="display: flex;">
+            <i class="fa fa-gear" style="color: #8095CE ;"></i> <!-- Azul -->
             <span>Gestion de Condición Laboral</span>
         </a>
     </li>
 
     <li class="has-sub{{ (Request::is('depcon/dependence') ? ' active' : '') }}">
         <a href="{{ route('dependence') }}">
-            <i class="fa fa-gear"></i>
+            <i class="fa fa-gear"   style="color: #8095CE ;"></i>
             <span>Gestion de Dependencia</span>
         </a>
     </li>
@@ -29,7 +29,7 @@
 
     <li class="has-sub{{ (Request::is('section/index') ? ' active' : '') }}">
         <a href="{{ route('getSections') }}">
-            <i class="fa fa-random"></i>
+            <i class="fa fa-random"  style="color: #8095CE ;"></i>
             <span>Asignar Resoluciones</span>
         </a>
     </li>
@@ -42,7 +42,7 @@
     <li class="has-sub {{ (Request::is('reports*') ? 'active' : '') }}">
         <a href="javascript:;">
             <b class="caret pull-right"></b>
-            <i class="fa fa-bar-chart-o"></i>
+            <i class="fa fa-bar-chart-o"  style="color: #8095CE ;"></i>
             <span>Reportes</span>
         </a>
         <ul class="sub-menu">

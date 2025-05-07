@@ -244,7 +244,6 @@
             <!-- end sidebar user -->
             <!-- begin sidebar nav -->
             <ul class="nav">
-                <li class="nav-header">Menu</li>
 
                 @include('template.partials.menu')
 
