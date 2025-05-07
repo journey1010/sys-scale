@@ -12,13 +12,14 @@
         </a>
     </li>
 
-    <li class="has-sub{{ (Request::is('laborconditional') ? ' active' : '') }}">
+    <li class="has-sub{{ (Request::is('depcon/laborconditional') ? ' active' : '') }}">
         <a href="{{ route('laborconditional') }}">
             <i class="fa fa-gear"></i>
             <span>Gestion de Condición Laboral</span>
         </a>
     </li>
-    <li class="has-sub{{ (Request::is('dependence') ? ' active' : '') }}">
+
+    <li class="has-sub{{ (Request::is('depcon/dependence') ? ' active' : '') }}">
         <a href="{{ route('dependence') }}">
             <i class="fa fa-gear"></i>
             <span>Gestion de Dependencia</span>

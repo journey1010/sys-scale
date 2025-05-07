@@ -10,13 +10,18 @@ Route::get('akdemic/signin-oidc',[ 'uses' => 'Auth\LoginController@getSigninAkde
 Route::get('akdemic/signout-callback-oidc',[ 'uses' => 'Auth\LoginController@getSignoutAkdemic' ]);
 //Route::get('/profile', 'ProfileController@index');
 
+Route::middleware(['role:admin'])->group(function () {
+    Route::get('staff_management', 'Profile\StaffManagementController@index')->name('staffManagement');
+    Route::post('staff_management', 'Profile\StaffManagementController@create')->name('addUser');
+    Route::post('staff_management/edit', 'Profile\StaffManagementController@edit')->name('editUser');
+    Route::get('delete/staff_management/{id}', 'Profile\StaffManagementController@delete')->name('deleteUser');
+});
 
-Route::get('staff_management', 'Profile\StaffManagementController@index')->name('staffManagement');
-Route::post('staff_management', 'Profile\StaffManagementController@create')->name('addUser');
-Route::post('staff_management/edit', 'Profile\StaffManagementController@edit')->name('editUser');
-Route::get('delete/staff_management/{id}', 'Profile\StaffManagementController@delete')->name('deleteUser');
 
 Route::group(['middleware' => ['role:admin|personal']], function () {
+
+
+
     Route::get('/', 'HomeController@index')->name('/');
     Route::get('/index', 'HomeController@index')->name('/');
 

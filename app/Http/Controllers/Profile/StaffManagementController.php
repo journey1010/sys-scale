@@ -24,7 +24,7 @@ class StaffManagementController extends Controller
     {
         $model = new IndexViewModel();
 
-        Session::forget('userName' );
+        Session::forget('userName');
         Session::forget('userId' );
 
         try{

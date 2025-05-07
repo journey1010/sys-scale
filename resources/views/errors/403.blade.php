@@ -22,11 +22,8 @@
         ACCESO DENEGADO / NO AUTORIZADO
     </p>
     <p style=" text-align: center; font-family: sans-serif; color: #989797; font-weight: 600; font-size: 1rem;">
-        LA PÁGINA QUE USTED ESTABA TRATANDO DE ALCANZAR ESTÁ ABSOLUTAMENTE PROHIBIDA POR ALGUNA RAZÓN
+        LA PÁGINA QUE USTED ESTABA TRATANDO DE ALCANZAR ESTÁ PROHIBIDA POR ALGUNA RAZÓN
     </p>
-    <div style="width: 70%; margin: auto;">
-        <img src="{{ asset('img/errors/403.svg') }}">
-    </div>
 </div>
 <!-- end:: Page -->
 
