@@ -73,7 +73,13 @@ class PdfController extends Controller
     {
         
         $header = $section->addHeader();
-        $header->addImage('images/login.png', array('positioning' => 'relative', 'width' => 50, 'height' => 50, 'wrappingStyle' => 'behind'));
+        $header->addImage(public_path('images/login.png'), [
+            'positioning' => 'relative',
+            'width' => 50,
+            'height' => 50,
+            'wrappingStyle' => 'behind',
+        ]);
+        
         $header->addText("\t\t\t\t\tOficina General de Recursos Humanos",
             array('name' => 'Calibri', 'size' => 14, 'bold' => true),
             array('align' => 'center')
