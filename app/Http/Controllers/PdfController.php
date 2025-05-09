@@ -202,7 +202,6 @@ class PdfController extends Controller
             $concentration = isset($title['concentration']) ? strtoupper($title['concentration']) : '';
             $section->addText("TÍTULO PROFESIONAL\t:\t" . $concentration);
 
-
             if ($personal['affiliation_date']) {
                 $fecha_ingreso = \DateTime::createFromFormat('Y-m-d', $personal['affiliation_date']);
                 $section->addText("FECHA INGRESO UNAP\t:\t" .  $fecha_ingreso->format('d') . " de " . config('constants.month_name')[$fecha_ingreso->format('m')*1] . " de " . $fecha_ingreso->format('Y') );
@@ -229,7 +228,6 @@ class PdfController extends Controller
             return response()->download(storage_path('app/public/InformeEscalafonario.docx'))->deleteFileAfterSend(true);
         }
         catch(\Exception $e){
-            dd($e->getMessage());
             return;
         }
     }    
