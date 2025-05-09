@@ -79,7 +79,7 @@ class PdfController extends Controller
             'height' => 50,
             'wrappingStyle' => 'behind',
         ]);
-        
+
         $header->addText("\t\t\t\t\tOficina General de Recursos Humanos",
             array('name' => 'Calibri', 'size' => 14, 'bold' => true),
             array('align' => 'center')
@@ -199,7 +199,9 @@ class PdfController extends Controller
             $section->addText("CONDICION\t\t:\t" . strtoupper($condition));
             $section->addText("CATEGORÍA\t\t:\t" . strtoupper($personal['category']));
             $section->addText("DEPENDENCIA\t\t:\t" . strtoupper($dependence));
-            $section->addText("TÍTULO PROFESIONAL\t:\t" . strtoupper($title['concentration']));
+            $concentration = isset($title['concentration']) ? strtoupper($title['concentration']) : '';
+            $section->addText("TÍTULO PROFESIONAL\t:\t" . $concentration);
+
 
             if ($personal['affiliation_date']) {
                 $fecha_ingreso = \DateTime::createFromFormat('Y-m-d', $personal['affiliation_date']);
