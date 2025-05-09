@@ -17,10 +17,7 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('delete/staff_management/{id}', 'Profile\StaffManagementController@delete')->name('deleteUser');
 });
 
-
 Route::group(['middleware' => ['role:admin|personal']], function () {
-
-
 
     Route::get('/', 'HomeController@index')->name('/');
     Route::get('/index', 'HomeController@index')->name('/');
@@ -153,8 +150,6 @@ Route::group(['middleware' => ['role:admin|personal']], function () {
         Route::get('/delete_annex/{id_section_annex}', 'SectionController@deleteAnnex')->name('deleteSectionAnnex');
 
     });
-
-
 });
 
 Route::group(['middleware' => ['role:admin']], function () {

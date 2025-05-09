@@ -221,6 +221,7 @@ class PdfController extends Controller
             return response()->download(storage_path('app/public/InformeEscalafonario.docx'))->deleteFileAfterSend(true);
         }
         catch(\Exception $e){
+            dd($e->getMessage());
             return;
         }
     }    
