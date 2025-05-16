@@ -188,7 +188,7 @@ class WordController extends Controller
 
             if ($personal['affiliation_date']) {
                 $fecha_ingreso = \DateTime::createFromFormat('Y-m-d', $personal['affiliation_date']);
-                $section->addText("FECHA INGRESO UNAP\t:\t" .  $fecha_ingreso->format('d') . " de " . config('constants.month_name')[$fecha_ingreso->format('m')*1] . " de " . $fecha_ingreso->format('Y') );
+                $section->addText("FECHA INGRESO\t:\t" .  $fecha_ingreso->format('d') . " de " . config('constants.month_name')[$fecha_ingreso->format('m')*1] . " de " . $fecha_ingreso->format('Y') );
                 $section->addText("TIEMPO DE SERVICIOS\t\t");
                 $fecha_ingreso2 = Carbon::instance($fecha_ingreso);
                 $diff_days = Carbon::now()->diff($fecha_ingreso2);
@@ -280,9 +280,6 @@ class WordController extends Controller
                 }
             }
             $section->addTextBreak();
-            $section->addText("Deuda pendiente con la UNAP", array('underline' => 'single'));
-            $section->addTextBreak();
-            $section->addText("No tiene.");
             $section->addTextBreak();
 
             $section->addText("Es así como consta en los archivos que obran en esta dependencia a los cuales me remito. Se expide el presente documento a solicitud de la parte interesada para los fines que estime convenientes.");
