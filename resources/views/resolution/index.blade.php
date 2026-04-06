@@ -118,7 +118,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group{{ $errors->has('resolution_number') ? ' has-error' : '' }}">
-                            <label class="col-md-3 control-label">N° Resolución</label>
+                            <label class="col-md-3 control-label">N° Documento</label>
                             <div class="col-md-8">
                                 {{ Form::text('resolution_number', null, ['class' => 'form-control', 'style' => '']) }}
                             </div>
@@ -144,7 +144,7 @@
                                 @endif
                             </div>
                         </div>
-
+                        
                         <div class="form-group{{ $errors->has('issuing_organ') ? ' has-error' : '' }}">
                             <label class="col-md-3 control-label">Órgano que Expide</label>
                             <div class="col-md-8">

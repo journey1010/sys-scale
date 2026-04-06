@@ -70,7 +70,7 @@
                         </table>
                     </div>
 
-                    <h4>Documentos de Autorizaci&oacute;n de Vacaciones &nbsp<button type="button" class="btn btn-sm btn-default addButton" data-toggle="modal" data-target="#addVacationModal"><i class="fa fa-plus"></i></button></h4>
+                    <h4>Documentos de Autorización de Vacaciones &nbsp<button type="button" class="btn btn-sm btn-default addButton" data-toggle="modal" data-target="#addVacationModal"><i class="fa fa-plus"></i></button></h4>
 
                         {{--<div style="padding-bottom: 5px"> D&iacute;as restantes (2017) : {{ $actual }} d&iacute;as </div>--}}
                         {{--<div style="padding-bottom: 5px"> Vacaciones acumuladas ({{ \Carbon\Carbon::now()->year - 1 }} - {{ \Carbon\Carbon::now()->year }}) : {{ $acumulative }} d&iacute;as </div>--}}
@@ -83,7 +83,7 @@
                                 <th class="col-md-1">Periodo</th>
                                 <th class="col-md-1">N° Días</th>
                                 <th>Fechas</th>
-                                <th>Memorando</th>
+                                <th>Documento</th>
                                 {{--<th>Fecha Resoluci&oacute;n</th>--}}
                                 {{--<th>Vacaciones</th>--}}
                                 <th>Res. de licencias a cuenta</th>
@@ -128,14 +128,14 @@
                         </table>
                     </div>
 
-                    <h4>Documentos de Autorizaci&oacute;n de Licencias &nbsp<button type="button" class="btn btn-sm btn-default addButton" data-toggle="modal" data-target="#addLicenseModal"><i class="fa fa-plus"></i></button></h4>
+                    <h4>Documentos de Autorización de Licencias &nbsp<button type="button" class="btn btn-sm btn-default addButton" data-toggle="modal" data-target="#addLicenseModal"><i class="fa fa-plus"></i></button></h4>
                     <div class="table-responsive">
                         <table id="data-table" class="table table-striped table-bordered" style="margin-bottom: 115px;">
                             <thead>
                             <tr>
                                 <th class="col-md-1">N° Días</th>
                                 <th>Fechas</th>
-                                <th>Memorando</th>
+                                <th>Documento</th>
                                 {{--<th>Fecha Resoluci&oacute;n</th>--}}
                                 <th>Con remuneraci&oacute;n</th>
                                 <th>Tipo</th>
@@ -175,14 +175,14 @@
                         </table>
                     </div>
 
-                    <h4>Documentos de Autorizaci&oacute;n de Permisos &nbsp<button type="button" class="btn btn-sm btn-default addButton" data-toggle="modal" data-target="#addPermitModal"><i class="fa fa-plus"></i></button></h4>
+                    <h4>Documentos de Autorización de Permisos &nbsp<button type="button" class="btn btn-sm btn-default addButton" data-toggle="modal" data-target="#addPermitModal"><i class="fa fa-plus"></i></button></h4>
                     <div class="table-responsive">
                         <table id="data-table" class="table table-striped table-bordered" style="margin-bottom: 115px;"s>
                             <thead>
                             <tr>
                                 <th class="col-md-1">N° Días</th>
                                 <th>Fechas</th>
-                                <th>Memorando</th>
+                                <th>Documento</th>
                                 {{--<th>Fecha Resoluci&oacute;n</th>--}}
                                 <th>Con remuneraci&oacute;n</th>
                                 <th>Motivo</th>
@@ -209,110 +209,6 @@
                                                 <li><a href="{{ route('permit.edit.get', ['id' => $licences->id]) }}">Editar</a></li>
                                                 <li class="divider"></li>
                                                 <li><a href="javascript:deletePermit('{{ $licences->id }}')" data-id="{{ $licences->id }}">Eliminar</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="6" class="text-center">No hay licencias para mostrar.</td>
-                                </tr>
-                            @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <h4>Documentos de Suspensiones de vacaciones &nbsp<button type="button" class="btn btn-sm btn-default addButton" data-toggle="modal" data-target="#addSuspensionVacationModal"><i class="fa fa-plus"></i></button></h4>
-
-                    {{--<div style="padding-bottom: 5px"> D&iacute;as restantes (2017) : {{ $actual }} d&iacute;as </div>--}}
-                    {{--<div style="padding-bottom: 5px"> Vacaciones acumuladas ({{ \Carbon\Carbon::now()->year - 1 }} - {{ \Carbon\Carbon::now()->year }}) : {{ $acumulative }} d&iacute;as </div>--}}
-
-                    <div class="table-responsive">
-                        <table id="data-table" class="table table-striped table-bordered" style="margin-bottom: 115px;">
-                            <thead>
-                            <tr>
-                                <th class="col-md-1">Periodo</th>
-                                <th class="col-md-1">N° Días</th>
-                                <th>Fechas</th>
-                                <th>Memorando</th>
-                                {{--<th>Fecha Resoluci&oacute;n</th>--}}
-                                {{--<th>Vacaciones</th>--}}
-                                <th>Res. de licencias a cuenta</th>
-                                <th>Doc. autoritativo de vacaciones</th>
-                                {{--<th>Observaciones</th>--}}
-                                <th></th>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-                            @forelse($suspension_vacation_authorizations as $licences)
-                                <tr>
-                                    <td>{{ $licences->anio }}</td>
-                                    <td>{{ $licences->number_days }}</td>
-                                    <td>{{ $licences->date_start }} - {{ $licences->date_end }}</td>
-                                    <td>{{ config('constants.memorando')[$licences->memorando_type] }}</td>
-                                    {{--{{ $licences->resolution_number }}--}}
-                                    {{--                                    <td>{{ config('constants.vacation_memorandum_type')[$licences->memorandum_type] }}</td>--}}
-                                    <td>{{ config('constants.vacation_license_resolution_type')[$licences->license_resolution_type] }}</td>
-                                    <td>{{ config('constants.vacation_suspension_document_type')[$licences->suspension_document_type] }}</td>
-                                    {{--<td>{{ $licences->comment }}</td>--}}
-                                    <td class="text-center">
-                                        <div class="btn-group m-r-0 m-b-0">
-                                            <a href="javascript:;" data-toggle="dropdown"
-                                               class="btn btn-info btn-xs dropdown-toggle">Opciones <span
-                                                        class="caret"></span></a>
-                                            <ul class="dropdown-menu" style="left: unset; right: 0">
-                                                <li><a href="{{ route('suspensionvacation.detail.get', ['id' => $licences->id]) }}">Detalle</a></li>
-                                                <li><a href="{{ route('suspensionvacation.edit.get', ['id' => $licences->id]) }}">Editar</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="javascript:deleteSuspensionVacation('{{ $licences->id }}')" data-id="{{ $licences->id }}">Eliminar</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="8" class="text-center">No hay licencias para mostrar.</td>
-                                </tr>
-                            @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <h4>Documentos de Licencias Especiales &nbsp<button type="button" class="btn btn-sm btn-default addButton" data-toggle="modal" data-target="#addSpecialLicenseModal"><i class="fa fa-plus"></i></button></h4>
-                    <div class="table-responsive">
-                        <table id="data-table" class="table table-striped table-bordered" style="margin-bottom: 115px;">
-                            <thead>
-                            <tr>
-                                <th class="col-md-1">N° Días</th>
-                                <th>Fechas</th>
-                                <th>Memorando</th>
-                                {{--<th>Fecha Resoluci&oacute;n</th>--}}
-                                <th>Con remuneraci&oacute;n</th>
-                                <th>Tipo</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-                            @forelse($special_licence_authorizations as $licences)
-                                <tr>
-                                    <td>{{ $licences->number_days }}</td>
-                                    <td>{{ $licences->date_start }} - {{ $licences->date_end }}</td>
-                                    <td>{{ config('constants.memorando')[$licences->memorando_type] }}</td>
-                                    {{--                                    <td>{{ $licences->resolution_number }}</td>--}}
-                                    <td>{{ ($licences->with_remunerations == true ? 'Si' : 'No') }}</td>
-                                    <td>{{ config('constants.license_license_resolution_type')[$licences->license_resolution_type] }}</td>
-                                    <td class="text-center">
-                                        <div class="btn-group m-r-0 m-b-0">
-                                            <a href="javascript:;" data-toggle="dropdown"
-                                               class="btn btn-info btn-xs dropdown-toggle">Opciones <span
-                                                        class="caret"></span></a>
-                                            <ul class="dropdown-menu" style="left: unset; right: 0">
-                                                <li><a href="{{ route('speciallicense.detail.get', ['id' => $licences->id]) }}">Detalle</a></li>
-                                                <li><a href="{{ route('speciallicense.edit.get', ['id' => $licences->id]) }}">Editar</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="javascript:deleteSpecialLicense('{{ $licences->id }}')" data-id="{{ $licences->id }}">Eliminar</a></li>
                                             </ul>
                                         </div>
                                     </td>

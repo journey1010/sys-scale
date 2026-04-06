@@ -10,7 +10,7 @@
     </ol>
 
     <h1 class="page-header">
-        Documentos de Autorizaci&oacute;n de Vacaciones <small>Detalle</small>
+        Documentos de Autorización de Vacaciones <small>Detalle</small>
     </h1>
 
     <div class="row">
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-3 control-label">Tipo de Memorando</label>
+                    <label class="col-md-3 control-label">Tipo de Documento</label>
                     <div class="col-md-8">
                         <input type="text" class="form-control" value="{{ config('constants.memorando')[$resolution->memorando_type] }}" disabled />
                     </div>
@@ -86,7 +86,7 @@
                         <input type="text" class="form-control" value="{{ $resolution->description or '' }}" disabled />
                     </div>
                 </div>
-
+            <!--
                 <div class="form-group">
                     <label class="col-md-3 control-label">Constancia</label>
                     <div class="col-md-8">
@@ -121,6 +121,7 @@
                         <textarea class="form-control" disabled >{{ $license->comment or '' }}</textarea>
                     </div>
                 </div>
+    -->
 
                 <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3"></label>

@@ -7,11 +7,11 @@
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Agregar Autorizaci&oacute;n de Vacaciones</h4>
+                <h4 class="modal-title">Agregar Autorización de Vacaciones</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group{{ $errors->has('resolution_number') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Memorando</label>
+                    <label class="col-md-3 control-label">N Documento</label>
                     <div class="col-md-8">
                         {{ Form::text('resolution_number', null, ['class' => 'form-control', 'style' => '']) }}
                     </div>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="form-group{{ $errors->has('resolution_type') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Tipo de Resoluci&oacute;n</label>
+                    <label class="col-md-3 control-label">Tipo de Resolución</label>
                     <div class="col-md-8">
                         {!! Form::select('resolution_type', $resolution_types, null, ['class' => 'form-control','required'=>'required']) !!}
                     </div>
@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('memorando_type') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Tipo de Memorando</label>
+                    <label class="col-md-3 control-label">Tipo de Documento</label>
                     <div class="col-md-8">
                         <select name="memorando_type" id="memorando_type" class="form-control" required="required">
                             <option value="1">Memorando</option>
@@ -126,9 +126,10 @@
                         @endif
                     </div>
                 </div>
-
+                
+            <!--
                 <div class="form-group{{ $errors->has('license_type') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Resoluci&oacute;n de licencias</label>
+                    <label class="col-md-3 control-label">Resolución de licencias</label>
                     <div class="col-md-8">
                         {!! Form::select('license_type', config('constants.vacation_license_resolution_type'), null, ['class' => 'form-control','required'=>'required']) !!}
                     </div>
@@ -164,7 +165,7 @@
                         @endif
                     </div>
                 </div>
-
+            -->
                 <div class="form-group">
                     <div class="col-md-offset-3 col-md-6">
                         {{ Form::submit('Añadir', ['class' => 'btn btn-info', 'style' => '']) }}

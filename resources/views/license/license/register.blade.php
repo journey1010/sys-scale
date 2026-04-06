@@ -7,7 +7,7 @@
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Agregar Documento de Autorizaci&oacute;n de Licencias</h4>
+                <h4 class="modal-title">Agregar Documento de Autorización de Licencias</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group{{ $errors->has('resolution_number') ? ' has-error' : '' }}">
@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('memorando_type') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Tipo de Memorando</label>
+                    <label class="col-md-3 control-label">Tipo de Documento</label>
                     <div class="col-md-8">
                         <select name="memorando_type" id="memorando_type" class="form-control" required="required">
                             <option value="1">Memorando</option>
