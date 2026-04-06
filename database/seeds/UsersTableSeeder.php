@@ -12,16 +12,19 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert(
-            [
-            'name' => 'dev',
-            'first_surname' => 'dev',
-            'second_surname' => 'dev',
-            'username' => 'devuser',
-            'email' => 'ginopaflo001608@gmail.com',
-            'password' => bcrypt('Hola5.2'),
-            'profileEnable' => true,
-            'created_at' => \Carbon\Carbon::now()
-        ]);
+        //DB::table('users')->insert(
+        //    [
+        //    'name' => 'dev',
+        //    'first_surname' => 'dev',
+        //    'second_surname' => 'dev',
+        //    'username' => 'devuser',
+        //    'email' => 'ginopaflo001608@gmail.com',
+        //    'password' => bcrypt('Hola5.2'),
+        //    'profileEnable' => true,
+        //    'created_at' => \Carbon\Carbon::now()
+        //]);
+
+        $a = bcrypt('Hola5.2');
+        dd($a);
     }
 }

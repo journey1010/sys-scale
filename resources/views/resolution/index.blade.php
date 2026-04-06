@@ -114,7 +114,7 @@
 
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Nueva resolución</h4>
+                        <h4 class="modal-title">Nuevo Documento Adjunto</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group{{ $errors->has('resolution_number') ? ' has-error' : '' }}">

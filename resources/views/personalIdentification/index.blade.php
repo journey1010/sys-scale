@@ -56,6 +56,7 @@
                             <tr class="separator-row" style="display: contents; text-align: center;">
                                 <td colspan="3" style="height: 20px; background-color: #ddd;">DATOS PERSONALES</td>
                             </tr>
+                            <!--
                             <tr style="background-color:rgb(4, 51, 30);">
                                 <td>Foto tamaño carnet</td>
                                 @if(is_null($Afill->foto_size_carnet))
@@ -75,7 +76,7 @@
                                     </td>
                                 @endif
                             </tr>
-
+                            -->
                             <tr>
                                 <td>Documento de Identidad</td>
                                 @if(is_null($Afill->presentatio_document))
