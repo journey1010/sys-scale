@@ -49,7 +49,8 @@ class SanctionController extends Controller
             $model->user_id = $id;
             $model->section_id = $section->id;
 
-            $section_annexes = SectionAnnex::where('id_section' , '=' , $section->id)->get();
+            // Filtrar por usuario para no mezclar anexos de otros legajos
+            $section_annexes = SectionAnnex::where([['id_section', '=', $section->id], ['id_user', '=', $id]])->get();
 
             return view('sanction.index', compact('model', 'section_annexes'));
 
