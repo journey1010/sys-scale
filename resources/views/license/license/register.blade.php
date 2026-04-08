@@ -11,7 +11,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-group{{ $errors->has('resolution_number') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Memorando</label>
+                    <label class="col-md-3 control-label">Número Documento</label>
                     <div class="col-md-8">
                         {{ Form::text('resolution_number', null, ['class' => 'form-control', 'style' => '']) }}
                     </div>
@@ -33,20 +33,6 @@
                         @endif
                     </div>
                 </div>
-                <div class="form-group{{ $errors->has('resolution_type') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Tipo de Resoluci&oacute;n</label>
-                    <div class="col-md-8">
-                        {!! Form::select('resolution_type', $resolution_types, null, ['class' => 'form-control','required'=>'required']) !!}
-                    </div>
-                    <div class="col-md-offset-3 col-md-8">
-                        @if ($errors->has('resolution_type'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('resolution_type') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
-
                 <div class="form-group{{ $errors->has('memorando_type') ? ' has-error' : '' }}">
                     <label class="col-md-3 control-label">Tipo de Documento</label>
                     <div class="col-md-8">
@@ -123,41 +109,6 @@
                     <div class="col-md-offset-3 col-md-8">
                         @if ($errors->has('constancy_url'))
                             <span class="help-block"><strong>{{ $errors->first('constancy_url') }}</strong></span>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group{{ $errors->has('remunerations') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Remunerada</label>
-                    <div class="col-md-8">
-                        <input type="hidden" name="remunerations" value="0">
-                        <div class="checkbox">
-                            <label>
-                                <input id="license_remu" name="remunerations" type="checkbox" value="1">
-                                ¿Con goce de remuneraci&oacute;n?
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-offset-3 col-md-8">
-                        @if ($errors->has('remunerations'))
-                            <span class="help-block"><strong>{{ $errors->first('remunerations') }}</strong></span>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group{{ $errors->has('license_type') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Tipo de Licencia</label>
-                    <div class="col-md-8">
-                        <select name="license_type" id="license_type" class="form-control" required="required">
-                            <option value="7">Por motivos particulares</option>
-                            <option value="8">Por capactitaci&oacute;n no oficializada</option>
-                            <option value="9">Por desempeño de funciones en otras instituciones o universidades nacionales y extranjeros</option>
-                        </select>
-                        {{--{!! Form::select('license_type', config('constants.vacation_license_resolution_type'), null, ['class' => 'form-control','required'=>'required']) !!}--}}
-                    </div>
-                    <div class="col-md-offset-3 col-md-8">
-                        @if ($errors->has('license_type'))
-                            <span class="help-block"><strong>{{ $errors->first('license_type') }}</strong></span>
                         @endif
                     </div>
                 </div>

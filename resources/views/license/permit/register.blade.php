@@ -7,11 +7,11 @@
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Agregar Documento de Autorizaci&oacute;n de Permiso</h4>
+                <h4 class="modal-title">Agregar Documento de Autorización de Permiso</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group{{ $errors->has('resolution_number') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Memorando</label>
+                    <label class="col-md-3 control-label">Número Documento</label>
                     <div class="col-md-8">
                         {{ Form::text('resolution_number', null, ['class' => 'form-control', 'style' => '']) }}
                     </div>
@@ -33,22 +33,8 @@
                         @endif
                     </div>
                 </div>
-                <div class="form-group{{ $errors->has('resolution_type') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Tipo de Resoluci&oacute;n</label>
-                    <div class="col-md-8">
-                        {!! Form::select('resolution_type', $resolution_types, null, ['class' => 'form-control','required'=>'required']) !!}
-                    </div>
-                    <div class="col-md-offset-3 col-md-8">
-                        @if ($errors->has('resolution_type'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('resolution_type') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
-
                 <div class="form-group{{ $errors->has('memorando_type') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Tipo de Memorando</label>
+                    <label class="col-md-3 control-label">Tipo de Documento</label>
                     <div class="col-md-8">
                         <select name="memorando_type" id="memorando_type" class="form-control" required="required">
                             <option value="1">Memorando</option>
@@ -126,41 +112,6 @@
                         @endif
                     </div>
                 </div>
-
-                <div class="form-group{{ $errors->has('remunerations') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Remunerado</label>
-                    <div class="col-md-8">
-                        <input type="hidden" name="remunerations" value="0">
-                        <div class="checkbox">
-                            <label>
-                                <input id="permit_remu" name="remunerations" type="checkbox" value="1">
-                                ¿Con goce de remuneraci&oacute;n?
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-offset-3 col-md-8">
-                        @if ($errors->has('remunerations'))
-                            <span class="help-block"><strong>{{ $errors->first('remunerations') }}</strong></span>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group{{ $errors->has('permit_type') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Tipo de Licencia</label>
-                    <div class="col-md-8">
-                        <select name="permit_type" id="permit_type" class="form-control" required="required">
-                            <option value="13">Por motivos particulares</option>
-                            <option value="14">Por capactitaci&oacute;n no oficializada</option>
-                            <option value="15">Otros</option>
-                        </select>
-                    </div>
-                    <div class="col-md-offset-3 col-md-8">
-                        @if ($errors->has('permit_type'))
-                            <span class="help-block"><strong>{{ $errors->first('permit_type') }}</strong></span>
-                        @endif
-                    </div>
-                </div>
-
                 <div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
                     <label class="col-md-3 control-label">Observación</label>
                     <div class="col-md-8">
