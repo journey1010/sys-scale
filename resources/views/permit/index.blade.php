@@ -5,7 +5,7 @@
     <ol class="breadcrumb pull-right">
         <li><a href="{{ route('/') }}">Inicio</a></li>
         <li><a href="{{ route('staffManagement') }}">Gestión de Personal</a></li>
-        <li class="active">Permisos y Estímulos</li>
+        <li class="active">Reconocimiento y Sanciones disciplinarias</li>
     </ol>
 
     @include('template.partials.subMenuUser')
@@ -24,7 +24,7 @@
                 </div>
                 <h4 class="panel-title">
                     <a href="{{ url('staff_management') }}" class="btn btn-xs btn-icon btn-circle btn-success"><i class="fa fa-arrow-left"></i></a>
-                    Reconocimientos y sanciones disciplinarias
+                    Reconocimiento y Sanciones disciplinarias
                 </h4>
             </div>
 
@@ -32,6 +32,31 @@
 
 
                 <div class="table-responsive">
+
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Descripción</th>
+                            <th>Vínculo</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @if(!$model->resolutions->isEmpty())
+                            @foreach($model->resolutions as $resolution)
+                                <tr>
+                                    <td>{{ $resolution->description }}</td>
+                                    <td>
+                                        <a href="{{ route('getResolutions', [$resolution->id , $model->user_id, $resolution->section_id]) }}" class="btn btn-info btn-xs">ver</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="2" class="text-center">No hay Resoluciones para mostrar.</td>
+                            </tr>
+                        @endif
+                        </tbody>
+                    </table>
 
                     <h4>Anexos &nbsp<button type="button" class="btn btn-sm btn-default addButton" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i></button></h4>
                     <table id="data-table" class="table table-striped table-bordered">

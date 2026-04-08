@@ -49,7 +49,7 @@ class PermitController extends Controller
             $model->user_id = $id;
             $model->section_id = $section->id;
 
-            $section_annexes = SectionAnnex::where('id_section' , '=' , $section->id)->get();
+            $section_annexes = SectionAnnex::where([['id_section', '=', $section->id], ['id_user', '=', $id]])->get();
 
             return view('permit.index', compact('model', 'section_annexes'));
 

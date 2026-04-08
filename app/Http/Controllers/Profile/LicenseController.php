@@ -58,7 +58,7 @@ class LicenseController extends Controller
             $model->user_id = $id;
             $model->section_id = $section->id;
 
-            $section_annexes = SectionAnnex::where('id_section' , '=' , $section->id)->get();
+            $section_annexes = SectionAnnex::where([['id_section', '=', $section->id], ['id_user', '=', $id]])->get();
 
             $licences_section = Licences::join('licence_type', 'licence_type.id', 'licences.id_licence_type')
                 ->where('licences.id_user', '=', $model->user_id)
