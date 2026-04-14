@@ -162,7 +162,9 @@ return[
         1 => 'Memorando',
         2 => 'Memorando Multiple',
         3 => 'Oficio',
-        4 => 'Oficio Mulplite'
+        4 => 'Oficio Mulplite',
+        5 => 'Resolución',
+        
     ],
 
 ];
