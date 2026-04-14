@@ -62,7 +62,7 @@
                 <div class="form-group{{ $errors->has('memorando_type') ? ' has-error' : '' }}">
                     <label class="col-md-3 control-label">Tipo de Memorando</label>
                     <div class="col-md-8">
-                         {{ Form::select('memorando_type',[ 1 => 'Memorando', 2 => 'Memorando Multiple', 3 => 'Oficio', 4 => 'Oficio Multiple' ], $resolution->memorando_type,['class' => 'form-control', 'id' => 'memorando_type','required' => true]) }}
+                         {{ Form::select('memorando_type',[ 1 => 'Memorando', 2 => 'Memorando Multiple', 3 => 'Oficio', 4 => 'Oficio Multiple', 5 => 'Resolución' ], $resolution->memorando_type,['class' => 'form-control', 'id' => 'memorando_type','required' => true]) }}
                     </div>
                     <div class="col-md-offset-3 col-md-8">
                         @if ($errors->has('memorando_type'))
