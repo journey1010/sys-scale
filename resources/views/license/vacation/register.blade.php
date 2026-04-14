@@ -33,6 +33,7 @@
                         @endif
                     </div>
                 </div>
+                <!--
                 <div class="form-group{{ $errors->has('resolution_type') ? ' has-error' : '' }}">
                     <label class="col-md-3 control-label">Tipo de Resolución</label>
                     <div class="col-md-8">
@@ -46,6 +47,7 @@
                         @endif
                     </div>
                 </div>
+                -->
 
                 <div class="form-group{{ $errors->has('memorando_type') ? ' has-error' : '' }}">
                     <label class="col-md-3 control-label">Tipo de Documento</label>
