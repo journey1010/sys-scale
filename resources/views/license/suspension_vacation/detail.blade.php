@@ -38,12 +38,12 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <!--div class="form-group">
                     <label class="col-md-3 control-label">Tipo Resolución</label>
                     <div class="col-md-8">
                         <input type="text" class="form-control" value="{{ $resolution_type->name or '' }}" disabled />
                     </div>
-                </div>
+                </div-->
 
                 <div class="form-group">
                     <label class="col-md-3 control-label">Tipo de Documento</label>

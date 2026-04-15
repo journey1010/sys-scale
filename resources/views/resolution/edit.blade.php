@@ -37,7 +37,7 @@
                     </div>
                 </div>
 
-                <div class="form-group{{ $errors->has('id_resolution_type') ? ' has-error' : '' }}">
+                <!--div class="form-group{{ $errors->has('id_resolution_type') ? ' has-error' : '' }}">
                     <label class="col-md-3 control-label">Tipo Resolución</label>
                     <div class="col-md-8">
                         {{ Form::select('id_resolution_type', $resolution_type_table, $model->id_resolution_type,['class' => 'form-control']) }}
@@ -49,7 +49,7 @@
                                 </span>
                         @endif
                     </div>
-                </div>
+                </div>-->
 
                 <div class="form-group{{ $errors->has('issue_date') ? ' has-error' : '' }}">
                     <label class="col-md-3 control-label">Fecha de Emisión</label>
