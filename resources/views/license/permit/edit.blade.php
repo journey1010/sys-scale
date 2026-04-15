@@ -62,7 +62,7 @@
                 <div class="form-group{{ $errors->has('memorando_type') ? ' has-error' : '' }}">
                     <label class="col-md-3 control-label">Tipo de Memorando</label>
                     <div class="col-md-8">
-                        {{ Form::select('id_resolution_type', $resolution_types, $resolution->id_resolution_type,['class' => 'form-control']) }}
+                        {{ Form::select('memorando_type',[ 1 => 'Memorando', 2 => 'Memorando Multiple', 3 => 'Oficio', 4 => 'Oficio Multiple', 5 => 'Resolución' ], $resolution->memorando_type,['class' => 'form-control', 'id' => 'memorando_type','required' => true]) }}
                     </div>
                     <div class="col-md-offset-3 col-md-8">
                         @if ($errors->has('memorando_type'))
@@ -76,7 +76,7 @@
                 <div class="form-group{{ $errors->has('issue_date') ? ' has-error' : '' }}">
                     <label class="col-md-3 control-label">Fecha de Emisión</label>
                     <div class="col-md-8">
-                        {{ Form::select('memorando_type',[ 1 => 'Memorando', 2 => 'Memorando Multiple', 3 => 'Oficio', 4 => 'Oficio Multiple' ], $resolution->memorando_type,['class' => 'form-control', 'id' => 'memorando_type','required' => true]) }}
+                        {{ Form::text('issue_date', is_null($resolution->issue_date) ? null : \Carbon\Carbon::parse($resolution->issue_date)->format('d-m-Y'), ['class' => 'form-control', 'id' => 'issue_date']) }}
                     </div>
                     <div class="col-md-offset-3 col-md-8">
                         @if ($errors->has('issue_date'))

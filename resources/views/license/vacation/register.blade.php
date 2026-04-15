@@ -56,7 +56,7 @@
                             <option value="1">Memorando</option>
                             <option value="2">Memorando Multiple</option>
                             <option value="3">Oficio</option>
-                            <option value="4">Oficio Multiplo</option>
+                            <option value="4">Oficio Multiple</option>
                             <option value="5">Resolución</option>
                         </select>
 {{--                        {!! Form::select('memorando_type', $resolution_types, null, ['class' => 'form-control','required'=>'required']) !!}--}}
