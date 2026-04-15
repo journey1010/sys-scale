@@ -194,9 +194,9 @@ class LicenseController extends Controller
             'work_position' => 'sometimes|required|max:50',
             'workplace' => 'sometimes|required|max:50',
 /*            'constancy_url' => 'required|mimes:pdf|max:32768',*/
-            'comment' => 'required',
-            'license_type' => 'required',
-            'suspension_type' => 'required'
+            'comment' => 'nullable',
+            'license_type' => 'nullable',
+            'suspension_type' => 'nullable'
         ]);
 
         $id_user = $request->input('id_user');
@@ -244,9 +244,9 @@ class LicenseController extends Controller
             $datediff = 0;
         $vacation_authorization->number_days = $datediff + 1;
         $vacation_authorization->anio = Carbon::parse($resolution->start_date)->year;
-        $vacation_authorization->comment = $request->input('comment');
-        $vacation_authorization->license_resolution_type = $request->input('license_type');
-        $vacation_authorization->suspension_document_type = $request->input('suspension_type');
+        $vacation_authorization->comment = $request->input('comment', '');
+        $vacation_authorization->license_resolution_type = $request->input('license_type', 1);
+        $vacation_authorization->suspension_document_type = $request->input('suspension_type', 1);
         $vacation_authorization->memorando_type = $request->input('memorando_type');
 
         $vacation_authorization->save();
@@ -293,9 +293,9 @@ class LicenseController extends Controller
             'start_date' => 'required',
             'description' => 'required|max:500',
             'constancy_url' => 'mimes:pdf|max:32768',
-            'comment' => 'required',
-            'license_type' => 'required',
-            'suspension_type' => 'required'
+            'comment' => 'nullable',
+            'license_type' => 'nullable',
+            'suspension_type' => 'nullable'
         ]);
 
         $id_resolution = $request->input('id_resolution');
@@ -331,9 +331,9 @@ class LicenseController extends Controller
             $datediff = 0;
         $vacation_authorization->number_days = $datediff + 1;
         $vacation_authorization->anio = Carbon::parse($request->input('start_date'))->year;
-        $vacation_authorization->comment = $request->input('comment');
-        $vacation_authorization->license_resolution_type = $request->input('license_type');
-        $vacation_authorization->suspension_document_type = $request->input('suspension_type');
+        $vacation_authorization->comment = $request->input('comment', '');
+        $vacation_authorization->license_resolution_type = $request->input('license_type', 1);
+        $vacation_authorization->suspension_document_type = $request->input('suspension_type', 1);
 
         $vacation_authorization->save();
 
@@ -368,12 +368,12 @@ class LicenseController extends Controller
             'description' => 'required|max:500',
             'work_position' => 'sometimes|required|max:50',
             'workplace' => 'sometimes|required|max:50',
-            'comment' => 'required',
-            'remunerations' => 'required',
-            'license_type' => 'required'
+            'comment' => 'nullable',
+            'remunerations' => 'nullable',
+            'license_type' => 'nullable'
         ]);
 
-        $this->validate($request,['constancy_url' => 'required|mimes:pdf|max:32768',],['El campo constancia es obligatorio.']);
+
 
         $id_user = $request->input('id_user');
         $id_resolution_type = $request->input('resolution_type');
@@ -394,10 +394,12 @@ class LicenseController extends Controller
         $resolution->workplace = $request->input('workplace');
 
         //Guardar constancia
-        $file = $request->constancy_url;
-        $filename = $file->store('public/resolution');
-        $resolution->constancy_path = '/' . $filename;
-        $resolution->constancy_url = '/storage/' . explode('/', $filename)[1] . '/' . explode('/', $filename)[2];
+        if($request->hasFile('constancy_url')){
+            $file = $request->constancy_url;
+            $filename = $file->store('public/resolution');
+            $resolution->constancy_path = '/' . $filename;
+            $resolution->constancy_url = '/storage/' . explode('/', $filename)[1] . '/' . explode('/', $filename)[2];
+        }
 
         $resolution->state_validation = 1;
         $resolution->id_user = $id_user;
@@ -414,9 +416,9 @@ class LicenseController extends Controller
             $datediff = 0;
 
         $license_authorization->number_days = $datediff + 1;
-        $license_authorization->comment = $request->input('comment');
-        $license_authorization->with_remunerations = $request->input('remunerations');
-        $license_authorization->license_resolution_type = $request->input('license_type');
+        $license_authorization->comment = $request->input('comment', '');
+        $license_authorization->with_remunerations = $request->input('remunerations', 0);
+        $license_authorization->license_resolution_type = $request->input('license_type', 1);
 
         $license_authorization->save();
 
@@ -460,9 +462,9 @@ class LicenseController extends Controller
             'start_date' => 'required',
             'description' => 'required|max:500',
             'constancy_url' => 'mimes:pdf|max:32768',
-            'comment' => 'required',
-            'remunerations' => 'required',
-            'license_type' => 'required'
+            'comment' => 'nullable',
+            'remunerations' => 'nullable',
+            'license_type' => 'nullable'
         ]);
 
         $id_resolution = $request->input('id_resolution');
@@ -497,9 +499,9 @@ class LicenseController extends Controller
         else
             $datediff = 0;
         $license->number_days = $datediff + 1;
-        $license->comment = $request->input('comment');
-        $license->with_remunerations = $request->input('remunerations');
-        $license->license_resolution_type = $request->input('license_type');
+        $license->comment = $request->input('comment', '');
+        $license->with_remunerations = $request->input('remunerations', 0);
+        $license->license_resolution_type = $request->input('license_type', 1);
         $license->save();
 
         Alert()->success('Completado!', 'Se guardaron los cambios')->persistent('Aceptar');
@@ -531,12 +533,12 @@ class LicenseController extends Controller
             'description' => 'required|max:500',
             'work_position' => 'sometimes|required|max:50',
             'workplace' => 'sometimes|required|max:50',
-            'comment' => 'required',
-            'remunerations' => 'required',
-            'permit_type' => 'required'
+            'comment' => 'nullable',
+            'remunerations' => 'nullable',
+            'permit_type' => 'nullable'
         ]);
 
-        $this->validate($request,['constancy_url' => 'required|mimes:pdf|max:32768',],['El campo constancia es obligatorio.']);
+
 
         $id_user = $request->input('id_user');
         $id_resolution_type = $request->input('resolution_type');
@@ -556,10 +558,12 @@ class LicenseController extends Controller
         $resolution->workplace = $request->input('workplace');
 
         //Guardar constancia
-        $file = $request->constancy_url;
-        $filename = $file->store('public/resolution');
-        $resolution->constancy_path = '/' . $filename;
-        $resolution->constancy_url = '/storage/' . explode('/', $filename)[1] . '/' . explode('/', $filename)[2];
+        if($request->hasFile('constancy_url')){
+            $file = $request->constancy_url;
+            $filename = $file->store('public/resolution');
+            $resolution->constancy_path = '/' . $filename;
+            $resolution->constancy_url = '/storage/' . explode('/', $filename)[1] . '/' . explode('/', $filename)[2];
+        }
 
         $resolution->state_validation = 1;
         $resolution->id_user = $id_user;
@@ -576,9 +580,9 @@ class LicenseController extends Controller
             $datediff = 0;
 
         $permit_authorization->number_days = $datediff + 1;
-        $permit_authorization->comment = $request->input('comment');
-        $permit_authorization->with_remunerations = $request->input('remunerations');
-        $permit_authorization->permit_reason = $request->input('permit_type');
+        $permit_authorization->comment = $request->input('comment', '');
+        $permit_authorization->with_remunerations = $request->input('remunerations', 0);
+        $permit_authorization->permit_reason = $request->input('permit_type', 1);
 
         $permit_authorization->save();
 
@@ -623,9 +627,9 @@ class LicenseController extends Controller
             'start_date' => 'required',
             'description' => 'required|max:500',
             'constancy_url' => 'mimes:pdf|max:32768',
-            'comment' => 'required',
-            'remunerations' => 'required',
-            'permit_type' => 'required'
+            'comment' => 'nullable',
+            'remunerations' => 'nullable',
+            'permit_type' => 'nullable'
         ]);
 
         $id_resolution = $request->input('id_resolution');
@@ -659,9 +663,9 @@ class LicenseController extends Controller
         else
             $datediff = 0;
         $license->number_days = $datediff + 1;
-        $license->comment = $request->input('comment');
-        $license->with_remunerations = $request->input('remunerations');
-        $license->permit_reason = $request->input('permit_type');
+        $license->comment = $request->input('comment', '');
+        $license->with_remunerations = $request->input('remunerations', 0);
+        $license->permit_reason = $request->input('permit_type', 1);
         $license->save();
 
         Alert()->success('Completado!', 'Se guardaron los cambios')->persistent('Aceptar');
@@ -695,9 +699,9 @@ class LicenseController extends Controller
             'work_position' => 'sometimes|required|max:50',
             'workplace' => 'sometimes|required|max:50',
             /*            'constancy_url' => 'required|mimes:pdf|max:32768',*/
-            'comment' => 'required',
-            'license_type' => 'required',
-            'suspension_type' => 'required'
+            'comment' => 'nullable',
+            'license_type' => 'nullable',
+            'suspension_type' => 'nullable'
         ]);
 
         $id_user = $request->input('id_user');
@@ -745,9 +749,9 @@ class LicenseController extends Controller
             $datediff = 0;
         $vacation_authorization->number_days = $datediff + 1;
         $vacation_authorization->anio = Carbon::parse($resolution->start_date)->year;
-        $vacation_authorization->comment = $request->input('comment');
-        $vacation_authorization->license_resolution_type = $request->input('license_type');
-        $vacation_authorization->suspension_document_type = $request->input('suspension_type');
+        $vacation_authorization->comment = $request->input('comment', '');
+        $vacation_authorization->license_resolution_type = $request->input('license_type', 1);
+        $vacation_authorization->suspension_document_type = $request->input('suspension_type', 1);
 
         $vacation_authorization->save();
 
@@ -792,9 +796,9 @@ class LicenseController extends Controller
             'start_date' => 'required',
             'description' => 'required|max:500',
             'constancy_url' => 'mimes:pdf|max:32768',
-            'comment' => 'required',
-            'license_type' => 'required',
-            'suspension_type' => 'required'
+            'comment' => 'nullable',
+            'license_type' => 'nullable',
+            'suspension_type' => 'nullable'
         ]);
 
         $id_resolution = $request->input('id_resolution');
@@ -830,9 +834,9 @@ class LicenseController extends Controller
             $datediff = 0;
         $vacation_authorization->number_days = $datediff + 1;
         $vacation_authorization->anio = Carbon::parse($request->input('start_date'))->year;
-        $vacation_authorization->comment = $request->input('comment');
-        $vacation_authorization->license_resolution_type = $request->input('license_type');
-        $vacation_authorization->suspension_document_type = $request->input('suspension_type');
+        $vacation_authorization->comment = $request->input('comment', '');
+        $vacation_authorization->license_resolution_type = $request->input('license_type', 1);
+        $vacation_authorization->suspension_document_type = $request->input('suspension_type', 1);
 
         $vacation_authorization->save();
 
@@ -867,12 +871,12 @@ class LicenseController extends Controller
             'description' => 'required|max:500',
             'work_position' => 'sometimes|required|max:50',
             'workplace' => 'sometimes|required|max:50',
-            'comment' => 'required',
-            'remunerations' => 'required',
-            'suspension_license_type' => 'required'
+            'comment' => 'nullable',
+            'remunerations' => 'nullable',
+            'suspension_license_type' => 'nullable'
         ]);
 
-        $this->validate($request,['constancy_url' => 'required|mimes:pdf|max:32768',],['El campo constancia es obligatorio.']);
+
 
         $id_user = $request->input('id_user');
         $id_resolution_type = $request->input('resolution_type');
@@ -893,10 +897,12 @@ class LicenseController extends Controller
         $resolution->workplace = $request->input('workplace');
 
         //Guardar constancia
-        $file = $request->constancy_url;
-        $filename = $file->store('public/resolution');
-        $resolution->constancy_path = '/' . $filename;
-        $resolution->constancy_url = '/storage/' . explode('/', $filename)[1] . '/' . explode('/', $filename)[2];
+        if($request->hasFile('constancy_url')){
+            $file = $request->constancy_url;
+            $filename = $file->store('public/resolution');
+            $resolution->constancy_path = '/' . $filename;
+            $resolution->constancy_url = '/storage/' . explode('/', $filename)[1] . '/' . explode('/', $filename)[2];
+        }
 
         $resolution->state_validation = 1;
         $resolution->id_user = $id_user;
@@ -913,9 +919,9 @@ class LicenseController extends Controller
             $datediff = 0;
 
         $license_authorization->number_days = $datediff + 1;
-        $license_authorization->comment = $request->input('comment');
-        $license_authorization->with_remunerations = $request->input('remunerations');
-        $license_authorization->license_resolution_type = $request->input('suspension_license_type');
+        $license_authorization->comment = $request->input('comment', '');
+        $license_authorization->with_remunerations = $request->input('remunerations', 0);
+        $license_authorization->license_resolution_type = $request->input('suspension_license_type', 1);
 
         $license_authorization->save();
 
@@ -959,9 +965,9 @@ class LicenseController extends Controller
             'start_date' => 'required',
             'description' => 'required|max:500',
             'constancy_url' => 'mimes:pdf|max:32768',
-            'comment' => 'required',
-            'remunerations' => 'required',
-            'license_type' => 'required'
+            'comment' => 'nullable',
+            'remunerations' => 'nullable',
+            'license_type' => 'nullable'
         ]);
 
         $id_resolution = $request->input('id_resolution');
@@ -996,9 +1002,9 @@ class LicenseController extends Controller
         else
             $datediff = 0;
         $license->number_days = $datediff + 1;
-        $license->comment = $request->input('comment');
-        $license->with_remunerations = $request->input('remunerations');
-        $license->license_resolution_type = $request->input('license_type');
+        $license->comment = $request->input('comment', '');
+        $license->with_remunerations = $request->input('remunerations', 0);
+        $license->license_resolution_type = $request->input('license_type', 1);
         $license->save();
 
         Alert()->success('Completado!', 'Se guardaron los cambios')->persistent('Aceptar');

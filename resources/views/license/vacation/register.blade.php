@@ -130,45 +130,7 @@
                     </div>
                 </div>
                 
-            <!--
-                <div class="form-group{{ $errors->has('license_type') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Resolución de licencias</label>
-                    <div class="col-md-8">
-                        {!! Form::select('license_type', config('constants.vacation_license_resolution_type'), null, ['class' => 'form-control','required'=>'required']) !!}
-                    </div>
-                    <div class="col-md-offset-3 col-md-8">
-                        @if ($errors->has('license_type'))
-                            <span class="help-block"><strong>{{ $errors->first('license_type') }}</strong></span>
-                        @endif
-                    </div>
-                </div>
 
-                <div class="form-group{{ $errors->has('suspension_type') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Documentos de suspensiones vacaciones</label>
-                    <div class="col-md-8">
-                        {!! Form::select('suspension_type', config('constants.vacation_suspension_document_type'), null, ['class' => 'form-control','required'=>'required']) !!}
-                    </div>
-                    <div class="col-md-offset-3 col-md-8">
-                        @if ($errors->has('suspension_type'))
-                            <span class="help-block"><strong>{{ $errors->first('suspension_type') }}</strong></span>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Observación</label>
-                    <div class="col-md-8">
-                        {{ Form::textarea('comment', null, ['class' => 'form-control', 'style' => 'height: 100px;']) }}
-                    </div>
-                    <div class="col-md-offset-3 col-md-8">
-                        @if ($errors->has('comment'))
-                            <span class="help-block">
-                                                    <strong>{{ $errors->first('comment') }}</strong>
-                                                </span>
-                        @endif
-                    </div>
-                </div>
-            -->
                 <div class="form-group">
                     <div class="col-md-offset-3 col-md-6">
                         {{ Form::submit('Añadir', ['class' => 'btn btn-info', 'style' => '']) }}

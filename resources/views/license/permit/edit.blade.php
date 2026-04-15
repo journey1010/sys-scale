@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('memorando_type') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Tipo de Memorando</label>
+                    <label class="col-md-3 control-label">Tipo Documento</label>
                     <div class="col-md-8">
                         {{ Form::select('memorando_type',[ 1 => 'Memorando', 2 => 'Memorando Multiple', 3 => 'Oficio', 4 => 'Oficio Multiple', 5 => 'Resolución' ], $resolution->memorando_type,['class' => 'form-control', 'id' => 'memorando_type','required' => true]) }}
                     </div>
@@ -157,52 +157,6 @@
                     </div>
                 </div>
 
-                <div class="form-group{{ $errors->has('remunerations') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Remunerada</label>
-                    <div class="col-md-8">
-                        <input type="hidden" name="remunerations" value="0">
-                        <div class="checkbox">
-                            <label>
-                                <input id="license_remu" name="remunerations" type="checkbox" value="1" {{ ($license->with_remunerations ? 'checked="checked"' : '') }}>
-                                ¿Con goce de remuneraci&oacute;n?
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-offset-3 col-md-8">
-                        @if ($errors->has('remunerations'))
-                            <span class="help-block"><strong>{{ $errors->first('remunerations') }}</strong></span>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group{{ $errors->has('permit_type') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Tipo de Licencia</label>
-                    <div class="col-md-8">
-                        @if($license->with_remunerations)
-                            {!! Form::select('permit_type', config('constants.permit_license_resolution_type_A'), $license->permit_reason, ['class' => 'form-control', 'id' => 'permit_type']) !!}
-                        @else
-                            {!! Form::select('permit_type', config('constants.permit_license_resolution_type_B'), $license->permit_reason, ['class' => 'form-control', 'id' => 'permit_type']) !!}
-                        @endif
-                    </div>
-                    <div class="col-md-offset-3 col-md-8">
-                        @if ($errors->has('permit_type'))
-                            <span class="help-block"><strong>{{ $errors->first('permit_type') }}</strong></span>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Observación</label>
-                    <div class="col-md-8">
-                        {{ Form::textarea('comment', $license->comment, ['class' => 'form-control', 'style' => 'height: 100px;']) }}
-                    </div>
-                    <div class="col-md-offset-3 col-md-8">
-                        @if ($errors->has('comment'))
-                            <span class="help-block"><strong>{{ $errors->first('comment') }}</strong></span>
-                        @endif
-                    </div>
-                </div>
-
                 <div class="form-group">
                     <div class="col-md-offset-3 col-md-6">
                         {{ Form::submit('Guardar', ['class' => 'btn btn-info', 'style' => '']) }}
@@ -216,14 +170,6 @@
 
 @section('scripts')
     <script>
-        $('#license_remu').change(function() {
-            if(this.checked) {
-                $("#permit_type").html("<option value='1'>Por enfermedad</option><option value='2'>Por gravidez</option><option value='3'>Por capacitaci&oacute;n oficializada</option><option value='4'>Por citaci&oacute;n expresa</option><option value='5'>Por funci&oacute;n edil</option><option value='6'>Por docencia o estudios universitarios</option><option value='7'>Por representatividad sindical</option><option value='8'>Por lactancia</option><option value='9'>Por refrigerio</option><option value='10'>Descanso por onom&aacute;stico</option><option value='11'>A cuenta de vacaciones</option><option value='12'>Otros</option>");
-            } else {
-                $("#permit_type").html("<option value='13'>Por motivos particulares</option><option value='14'>Por capactitaci&oacute;n no oficializada</option><option value='15'>Otros</option>");
-            }
-        });
-
         $( "#end_date,#issue_date" ).datepicker({
             format:"dd-mm-yyyy",
             language:"es"

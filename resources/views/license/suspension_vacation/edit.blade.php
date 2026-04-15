@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('memorando_type') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Tipo de Memorando</label>
+                    <label class="col-md-3 control-label">Tipo Documento</label>
                     <div class="col-md-8">
                         {{ Form::select('memorando_type',[ 1 => 'Memorando', 2 => 'Memorando Multiple', 3 => 'Oficio', 4 => 'Oficio Multiple', 5 => 'Resolución' ], $resolution->memorando_type,['class' => 'form-control', 'id' => 'memorando_type','required' => true]) }}
                     </div>
@@ -154,42 +154,6 @@
                             <span class="help-block">
                                     <strong>{{ $errors->first('constancy_url') }}</strong>
                                 </span>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group{{ $errors->has('license_type') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Resoluci&oacute;n de licencias</label>
-                    <div class="col-md-8">
-                        {!! Form::select('license_type', config('constants.vacation_license_resolution_type'), $license->license_resolution_type, ['class' => 'form-control','required'=>'required']) !!}
-                    </div>
-                    <div class="col-md-offset-3 col-md-8">
-                        @if ($errors->has('license_type'))
-                            <span class="help-block"><strong>{{ $errors->first('license_type') }}</strong></span>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group{{ $errors->has('suspension_type') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Documento de suspensi&oacute;n de vacaciones</label>
-                    <div class="col-md-8">
-                        {!! Form::select('suspension_type', config('constants.vacation_suspension_document_type'), $license->suspension_document_type, ['class' => 'form-control','required'=>'required']) !!}
-                    </div>
-                    <div class="col-md-offset-3 col-md-8">
-                        @if ($errors->has('suspension_type'))
-                            <span class="help-block"><strong>{{ $errors->first('suspension_type') }}</strong></span>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Observación</label>
-                    <div class="col-md-8">
-                        {{ Form::textarea('comment', $license->comment, ['class' => 'form-control', 'style' => 'height: 100px;']) }}
-                    </div>
-                    <div class="col-md-offset-3 col-md-8">
-                        @if ($errors->has('comment'))
-                            <span class="help-block"><strong>{{ $errors->first('comment') }}</strong></span>
                         @endif
                     </div>
                 </div>

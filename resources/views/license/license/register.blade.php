@@ -114,19 +114,8 @@
                     </div>
                 </div>
 
-                <div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Observación</label>
-                    <div class="col-md-8">
-                        {{ Form::textarea('comment', null, ['class' => 'form-control', 'style' => 'height: 100px;']) }}
-                    </div>
-                    <div class="col-md-offset-3 col-md-8">
-                        @if ($errors->has('comment'))
-                            <span class="help-block">
-                                                    <strong>{{ $errors->first('comment') }}</strong>
-                                                </span>
-                        @endif
-                    </div>
-                </div>
+
+
 
                 <div class="form-group">
                     <div class="col-md-offset-3 col-md-6">

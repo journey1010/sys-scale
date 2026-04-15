@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-3 control-label">Tipo de Memorando</label>
+                    <label class="col-md-3 control-label">Tipo Documento</label>
                     <div class="col-md-8">
                         <input type="text" class="form-control" value="{{ config('constants.memorando')[$resolution->memorando_type] }}" disabled />
                     </div>
