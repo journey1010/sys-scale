@@ -94,7 +94,7 @@
                                 <tr>
                                     <td>{{ $licences->anio }}</td>
                                     <td>{{ $licences->date_start }} - {{ $licences->date_end }}</td>
-                                    <td>{{ config('constants.memorando')[$licences->memorando_type] }}</td>
+                                    <td>{{ config('constants.memorando')[$licences->memorando_type] ?? '' }}</td>
                                     <td>{{ $licences->description }}</td>
                                     {{--<td>{{ $licences->comment }}</td>--}}
                                     <td class="text-center">
@@ -138,7 +138,7 @@
                                 <tr>
                                     <td>{{ $licences->number_days }}</td>
                                     <td>{{ $licences->date_start }} - {{ $licences->date_end }}</td>
-                                    <td>{{ config('constants.memorando')[$licences->memorando_type] }}</td>
+                                    <td>{{ config('constants.memorando')[$licences->memorando_type] ?? '' }}</td>
                                     <td>{{ $licences->description }}</td>
                                     <td class="text-center">
                                         <div class="btn-group m-r-0 m-b-0">
@@ -181,7 +181,7 @@
                                 <tr>
                                     <td>{{ $licences->number_days }}</td>
                                     <td>{{ $licences->date_start }} - {{ $licences->date_end }}</td>
-                                    <td>{{ config('constants.memorando')[$licences->memorando_type] }}</td>
+                                    <td>{{ config('constants.memorando')[$licences->memorando_type] ?? '' }}</td>
                                     <td>{{ $licences->description }}</td>
                                     <td class="text-center">
                                         <div class="btn-group m-r-0 m-b-0">

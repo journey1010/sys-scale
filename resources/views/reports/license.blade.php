@@ -85,7 +85,7 @@
                                         <td>{{ $item->resolution_number }}</td>
                                         <td>{{ date('d/m/Y', strtotime($item->issue_date)) }}</td>
                                         <td>{{ ($item->with_remunerations == true ? 'Si' : 'No') }}</td>
-                                        <td>{{ config('constants.license_license_resolution_type')[$item->license_resolution_type] }}</td>
+                                        <td>{{ config('constants.license_license_resolution_type')[$item->license_resolution_type] ?? '' }}</td>
                                         <td>{{ $item->comment }}</td>
                                     </tr>
                                 @endforeach
@@ -120,7 +120,7 @@
                                         <td>{{ $item->resolution_number }}</td>
                                         <td>{{ date('d/m/Y', strtotime($item->issue_date)) }}</td>
                                         <td>{{ ($item->with_remunerations == true ? 'Si' : 'No') }}</td>
-                                        <td>{{ config('constants.permit_license_resolution_type')[$item->permit_reason] }}</td>
+                                        <td>{{ config('constants.permit_license_resolution_type')[$item->permit_reason] ?? '' }}</td>
                                         <td>{{ $item->comment }}</td>
                                     </tr>
                                 @endforeach
