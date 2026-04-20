@@ -32,7 +32,7 @@
                 {{ Form::hidden('constancy_path', $resolution->constancy_path) }}
 
                 <div class="form-group{{ $errors->has('resolution_number') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Memorando</label>
+                    <label class="col-md-3 control-label">Número de documento</label>
                     <div class="col-md-8">
                         {{ Form::text('resolution_number', $resolution->resolution_number, ['class' => 'form-control', 'style' => '']) }}
                     </div>
