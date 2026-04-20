@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Alert;
 use Illuminate\Support\Facades\Storage;
-use Mockery\Exception;
+use Exception;
 use Session;
 use Carbon\Carbon;
 use App\Models\User;
@@ -78,6 +78,7 @@ class LicenseController extends Controller
                     'resolution.resolution_number',
                     'resolution.issue_date',
                     'resolution.memorando_type',
+                    'resolution.description',
                     'vacation_authorization.license_resolution_type',
                     'vacation_authorization.suspension_document_type'
                 )->get();
@@ -95,6 +96,7 @@ class LicenseController extends Controller
                     'resolution.resolution_number',
                     'resolution.issue_date',
                     'resolution.memorando_type',
+                    'resolution.description',
                     'suspension_vacation_authorization.license_resolution_type',
                     'suspension_vacation_authorization.suspension_document_type'
                 )->get();
@@ -136,6 +138,7 @@ class LicenseController extends Controller
                     'resolution.resolution_number',
                     'resolution.issue_date',
                     'resolution.memorando_type',
+                    'resolution.description',
                     'licensing_authorization.with_remunerations',
                     'licensing_authorization.license_resolution_type'
                 )->get();
@@ -151,6 +154,7 @@ class LicenseController extends Controller
                     'resolution.resolution_number',
                     'resolution.issue_date',
                     'resolution.memorando_type',
+                    'resolution.description',
                     'special_license_authorization.with_remunerations',
                     'special_license_authorization.license_resolution_type'
                 )->get();
@@ -166,6 +170,7 @@ class LicenseController extends Controller
                     'resolution.resolution_number',
                     'resolution.issue_date',
                     'resolution.memorando_type',
+                    'resolution.description',
                     'permit_authorization.with_remunerations',
                     'permit_authorization.permit_reason'
                 )->get();
@@ -200,13 +205,10 @@ class LicenseController extends Controller
         ]);
 
         $id_user = $request->input('id_user');
-        $id_resolution_type = $request->input('resolution_type');
-        $memorando_type = $request->input('memorando_type');
+
 
         $resolution = new Resolution();
         $resolution->resolution_number = $request->input('resolution_number');
-        $resolution->id_resolution_type = $id_resolution_type;
-        $resolution->memorando_type = $memorando_type;
 
         $resolution->issue_date = Carbon::parse($request->input('issue_date'));
         $resolution->issuing_organ = $request->input('issuing_organ');
@@ -247,7 +249,6 @@ class LicenseController extends Controller
         $vacation_authorization->comment = $request->input('comment', '');
         $vacation_authorization->license_resolution_type = $request->input('license_type', 1);
         $vacation_authorization->suspension_document_type = $request->input('suspension_type', 1);
-        $vacation_authorization->memorando_type = $request->input('memorando_type');
 
         $vacation_authorization->save();
 
@@ -258,9 +259,13 @@ class LicenseController extends Controller
     {
         try {
 
-            $license = VacationAuthorization::find($id);
-            $resolution = Resolution::findOrFail($license->id_resolution);
-            $resolution_type = ResolutionType::findOrFail($resolution->id_resolution_type);
+            $license = VacationAuthorization::findOrFail($id);
+            $resolution = Resolution::find($license->id_resolution);
+            if (!$resolution) {
+                $resolution = new Resolution();
+                $resolution->id_user = $license->id_user ?? 0; // Fallback to license's user if available
+            }
+            $resolution_type = ResolutionType::find($resolution->id_resolution_type);
 
             return view('license.vacation.detail', compact('license','resolution', 'resolution_type'));
 
@@ -286,13 +291,12 @@ class LicenseController extends Controller
     {
         $this->validate($request,[
 //            'id_user' => 'required|integer|exists:users,id',
-            'id_resolution_type' => 'required|integer|exists:resolution_type,id',
             'resolution_number' => 'required',
             'issue_date' => 'required',
             'issuing_organ' => 'required|max:100',
             'start_date' => 'required',
             'description' => 'required|max:500',
-            'constancy_url' => 'mimes:pdf|max:32768',
+            'constancy_url' => 'nullable|mimes:pdf',
             'comment' => 'nullable',
             'license_type' => 'nullable',
             'suspension_type' => 'nullable'
@@ -303,8 +307,6 @@ class LicenseController extends Controller
 
         $resolution = Resolution::find($id_resolution);
         $resolution->resolution_number = $request->input('resolution_number');
-        $resolution->id_resolution_type = $request->input('id_resolution_type');
-        $resolution->memorando_type = $request->input('memorando_type');
 
         $resolution->issue_date = Carbon::parse($request->input('issue_date'));
         $resolution->issuing_organ = $request->input('issuing_organ');
@@ -313,8 +315,8 @@ class LicenseController extends Controller
         $resolution->description = $request->input('description');
 
         //Guardar constancia
-        if (!empty($request->constancy_url)) {
-            $file = $request->constancy_url;
+        if ($request->hasFile('constancy_url')) {
+            $file = $request->file('constancy_url');
             $filename = $file->store('public/resolution');
             $resolution->constancy_path = '/' . $filename;
             $resolution->constancy_url = '/storage/' . explode('/', $filename)[1] . '/' . explode('/', $filename)[2];
@@ -376,13 +378,10 @@ class LicenseController extends Controller
 
 
         $id_user = $request->input('id_user');
-        $id_resolution_type = $request->input('resolution_type');
-        $memorando_type = $request->input('memorando_type');
+
 
         $resolution = new Resolution();
         $resolution->resolution_number = $request->input('resolution_number');
-        $resolution->id_resolution_type = $id_resolution_type;
-        $resolution->memorando_type = $memorando_type;
 
         $resolution->issue_date = Carbon::parse($request->input('issue_date'));
         $resolution->issuing_organ = $request->input('issuing_organ');
@@ -428,9 +427,16 @@ class LicenseController extends Controller
     public function detailLicense($id)
     {
         try {
-            $license = LicensingAuthorization::find($id);
-            $resolution = Resolution::findOrFail($license->id_resolution);
-            $resolution_type = ResolutionType::findOrFail($resolution->id_resolution_type);
+            $license = LicensingAuthorization::findOrFail($id);
+            $resolution = Resolution::find($license->id_resolution);
+            if (!$resolution) {
+                $resolution = new Resolution();
+                $resolution->id_user = $license->id_user ?? 0;
+            }
+            $resolution_type = null;
+            if (!empty($resolution->id_resolution_type)) {
+                $resolution_type = ResolutionType::find($resolution->id_resolution_type);
+            }
 
             return view('license.license.detail', compact('license','resolution', 'resolution_type'));
 
@@ -455,13 +461,12 @@ class LicenseController extends Controller
     public function editLicensePost(Request $request)
     {
         $this->validate($request,[
-            'id_resolution_type' => 'required|integer|exists:resolution_type,id',
             'resolution_number' => 'required',
             'issue_date' => 'required',
             'issuing_organ' => 'required|max:100',
             'start_date' => 'required',
             'description' => 'required|max:500',
-            'constancy_url' => 'mimes:pdf|max:32768',
+            'constancy_url' => 'nullable|mimes:pdf',
             'comment' => 'nullable',
             'remunerations' => 'nullable',
             'license_type' => 'nullable'
@@ -473,8 +478,6 @@ class LicenseController extends Controller
 
         $resolution = Resolution::find($id_resolution);
         $resolution->resolution_number = $request->input('resolution_number');
-        $resolution->id_resolution_type = $request->input('id_resolution_type');
-        $resolution->memorando_type = $request->input('memorando_type');
 
         $resolution->issue_date = Carbon::parse($request->input('issue_date'));
         $resolution->issuing_organ = $request->input('issuing_organ');
@@ -483,8 +486,8 @@ class LicenseController extends Controller
         $resolution->description = $request->input('description');
 
         //Guardar constancia
-        if (!empty($request->constancy_url)) {
-            $file = $request->constancy_url;
+        if ($request->hasFile('constancy_url')) {
+            $file = $request->file('constancy_url');
             $filename = $file->store('public/resolution');
             $resolution->constancy_path = '/' . $filename;
             $resolution->constancy_url = '/storage/' . explode('/', $filename)[1] . '/' . explode('/', $filename)[2];
@@ -541,13 +544,10 @@ class LicenseController extends Controller
 
 
         $id_user = $request->input('id_user');
-        $id_resolution_type = $request->input('resolution_type');
-        $memorando_type = $request->input('memorando_type');
+
 
         $resolution = new Resolution();
         $resolution->resolution_number = $request->input('resolution_number');
-        $resolution->id_resolution_type = $id_resolution_type;
-        $resolution->memorando_type = $memorando_type;
         $resolution->issue_date = Carbon::parse($request->input('issue_date'));
         $resolution->issuing_organ = $request->input('issuing_organ');
         $resolution->start_date = Carbon::parse($request->input('start_date'));
@@ -593,9 +593,13 @@ class LicenseController extends Controller
     {
         try {
 
-            $license = PermitAuthorization::find($id);
-            $resolution = Resolution::findOrFail($license->id_resolution);
-            $resolution_type = ResolutionType::findOrFail($resolution->id_resolution_type);
+            $license = PermitAuthorization::findOrFail($id);
+            $resolution = Resolution::find($license->id_resolution);
+            if (!$resolution) {
+                $resolution = new Resolution();
+                $resolution->id_user = $license->id_user ?? 0;
+            }
+            $resolution_type = ResolutionType::find($resolution->id_resolution_type);
 
             return view('license.permit.detail', compact('license','resolution', 'resolution_type'));
 
@@ -620,13 +624,12 @@ class LicenseController extends Controller
     public function editPermitPost(Request $request)
     {
         $this->validate($request,[
-            'id_resolution_type' => 'required|integer|exists:resolution_type,id',
             'resolution_number' => 'required',
             'issue_date' => 'required',
             'issuing_organ' => 'required|max:100',
             'start_date' => 'required',
             'description' => 'required|max:500',
-            'constancy_url' => 'mimes:pdf|max:32768',
+            'constancy_url' => 'nullable|mimes:pdf',
             'comment' => 'nullable',
             'remunerations' => 'nullable',
             'permit_type' => 'nullable'
@@ -637,8 +640,6 @@ class LicenseController extends Controller
 
         $resolution = Resolution::find($id_resolution);
         $resolution->resolution_number = $request->input('resolution_number');
-        $resolution->id_resolution_type = $request->input('id_resolution_type');
-        $resolution->memorando_type = $request->input('memorando_type');
 
         $resolution->issue_date = Carbon::parse($request->input('issue_date'));
         $resolution->issuing_organ = $request->input('issuing_organ');
@@ -647,8 +648,8 @@ class LicenseController extends Controller
         $resolution->description = $request->input('description');
 
         //Guardar constancia
-        if (!empty($request->constancy_url)) {
-            $file = $request->constancy_url;
+        if ($request->hasFile('constancy_url')) {
+            $file = $request->file('constancy_url');
             $filename = $file->store('public/resolution');
             $resolution->constancy_path = '/' . $filename;
             $resolution->constancy_url = '/storage/' . explode('/', $filename)[1] . '/' . explode('/', $filename)[2];
@@ -705,13 +706,10 @@ class LicenseController extends Controller
         ]);
 
         $id_user = $request->input('id_user');
-        $id_resolution_type = $request->input('resolution_type');
-        $memorando_type = $request->input('memorando_type');
+
 
         $resolution = new Resolution();
         $resolution->resolution_number = $request->input('resolution_number');
-        $resolution->id_resolution_type = $id_resolution_type;
-        $resolution->memorando_type = $memorando_type;
 
         $resolution->issue_date = Carbon::parse($request->input('issue_date'));
         $resolution->issuing_organ = $request->input('issuing_organ');
@@ -761,9 +759,13 @@ class LicenseController extends Controller
     public function detailSuspensionVacation($id)
     {
         try {
-            $license = SuspensionVacation::find($id);
-            $resolution = Resolution::findOrFail($license->id_resolution);
-            $resolution_type = ResolutionType::findOrFail($resolution->id_resolution_type);
+            $license = SuspensionVacation::findOrFail($id);
+            $resolution = Resolution::find($license->id_resolution);
+            if (!$resolution) {
+                $resolution = new Resolution();
+                $resolution->id_user = $license->id_user ?? 0;
+            }
+            $resolution_type = ResolutionType::find($resolution->id_resolution_type);
 
             return view('license.suspension_vacation.detail', compact('license','resolution', 'resolution_type'));
 
@@ -789,13 +791,12 @@ class LicenseController extends Controller
     {
         $this->validate($request,[
 //            'id_user' => 'required|integer|exists:users,id',
-            'id_resolution_type' => 'required|integer|exists:resolution_type,id',
             'resolution_number' => 'required',
             'issue_date' => 'required',
             'issuing_organ' => 'required|max:100',
             'start_date' => 'required',
             'description' => 'required|max:500',
-            'constancy_url' => 'mimes:pdf|max:32768',
+            'constancy_url' => 'nullable|mimes:pdf',
             'comment' => 'nullable',
             'license_type' => 'nullable',
             'suspension_type' => 'nullable'
@@ -806,8 +807,7 @@ class LicenseController extends Controller
 
         $resolution = Resolution::find($id_resolution);
         $resolution->resolution_number = $request->input('resolution_number');
-        $resolution->id_resolution_type = $request->input('id_resolution_type');
-        $resolution->memorando_type = $request->input('memorando_type');
+
 
         $resolution->issue_date = Carbon::parse($request->input('issue_date'));
         $resolution->issuing_organ = $request->input('issuing_organ');
@@ -816,8 +816,8 @@ class LicenseController extends Controller
         $resolution->description = $request->input('description');
 
         //Guardar constancia
-        if (!empty($request->constancy_url)) {
-            $file = $request->constancy_url;
+        if ($request->hasFile('constancy_url')) {
+            $file = $request->file('constancy_url');
             $filename = $file->store('public/resolution');
             $resolution->constancy_path = '/' . $filename;
             $resolution->constancy_url = '/storage/' . explode('/', $filename)[1] . '/' . explode('/', $filename)[2];
@@ -879,13 +879,10 @@ class LicenseController extends Controller
 
 
         $id_user = $request->input('id_user');
-        $id_resolution_type = $request->input('resolution_type');
-        $memorando_type = $request->input('memorando_type');
+
 
         $resolution = new Resolution();
         $resolution->resolution_number = $request->input('resolution_number');
-        $resolution->id_resolution_type = $id_resolution_type;
-        $resolution->memorando_type = $memorando_type;
 
         $resolution->issue_date = Carbon::parse($request->input('issue_date'));
         $resolution->issuing_organ = $request->input('issuing_organ');
@@ -931,9 +928,13 @@ class LicenseController extends Controller
     public function detailSpecialLicense($id)
     {
         try {
-            $license = Special_License::find($id);
-            $resolution = Resolution::findOrFail($license->id_resolution);
-            $resolution_type = ResolutionType::findOrFail($resolution->id_resolution_type);
+            $license = Special_License::findOrFail($id);
+            $resolution = Resolution::find($license->id_resolution);
+            if (!$resolution) {
+                $resolution = new Resolution();
+                $resolution->id_user = $license->id_user ?? 0;
+            }
+            $resolution_type = ResolutionType::find($resolution->id_resolution_type);
 
             return view('license.special_license.detail', compact('license','resolution', 'resolution_type'));
 
@@ -958,13 +959,12 @@ class LicenseController extends Controller
     public function editSpecialLicensePost(Request $request)
     {
         $this->validate($request,[
-            'id_resolution_type' => 'required|integer|exists:resolution_type,id',
             'resolution_number' => 'required',
             'issue_date' => 'required',
             'issuing_organ' => 'required|max:100',
             'start_date' => 'required',
             'description' => 'required|max:500',
-            'constancy_url' => 'mimes:pdf|max:32768',
+            'constancy_url' => 'nullable|mimes:pdf',
             'comment' => 'nullable',
             'remunerations' => 'nullable',
             'license_type' => 'nullable'
@@ -976,8 +976,6 @@ class LicenseController extends Controller
 
         $resolution = Resolution::find($id_resolution);
         $resolution->resolution_number = $request->input('resolution_number');
-        $resolution->id_resolution_type = $request->input('id_resolution_type');
-        $resolution->memorando_type = $request->input('memorando_type');
 
         $resolution->issue_date = Carbon::parse($request->input('issue_date'));
         $resolution->issuing_organ = $request->input('issuing_organ');
@@ -986,8 +984,8 @@ class LicenseController extends Controller
         $resolution->description = $request->input('description');
 
         //Guardar constancia
-        if (!empty($request->constancy_url)) {
-            $file = $request->constancy_url;
+        if ($request->hasFile('constancy_url')) {
+            $file = $request->file('constancy_url');
             $filename = $file->store('public/resolution');
             $resolution->constancy_path = '/' . $filename;
             $resolution->constancy_url = '/storage/' . explode('/', $filename)[1] . '/' . explode('/', $filename)[2];

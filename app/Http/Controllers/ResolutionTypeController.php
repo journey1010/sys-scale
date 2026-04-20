@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\ResolutionType;
 use App\Models\User;
 use Alert;
-use Mockery\Exception;
+use Exception;
 
 class ResolutionTypeController extends Controller
 {

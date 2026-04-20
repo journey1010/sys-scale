@@ -81,13 +81,9 @@
                             <thead>
                             <tr>
                                 <th class="col-md-1">Periodo</th>
-                                <th class="col-md-1">N° Días</th>
                                 <th>Fechas</th>
                                 <th>Documento</th>
-                                {{--<th>Fecha Resoluci&oacute;n</th>--}}
-                                {{--<th>Vacaciones</th>--}}
-                                <th>Res. de licencias a cuenta</th>
-                                <th>Doc. autoritativo de vacaciones</th>
+                                <th>Descripci&oacute;n</th>
                                 {{--<th>Observaciones</th>--}}
                                 <th></th>
                             </tr>
@@ -97,13 +93,9 @@
                             @forelse($vacation_authorizations as $licences)
                                 <tr>
                                     <td>{{ $licences->anio }}</td>
-                                    <td>{{ $licences->number_days }}</td>
                                     <td>{{ $licences->date_start }} - {{ $licences->date_end }}</td>
                                     <td>{{ config('constants.memorando')[$licences->memorando_type] }}</td>
-                                    {{--{{ $licences->resolution_number }}--}}
-{{--                                    <td>{{ config('constants.vacation_memorandum_type')[$licences->memorandum_type] }}</td>--}}
-                                    <td>{{ config('constants.vacation_license_resolution_type')[$licences->license_resolution_type] }}</td>
-                                    <td>{{ config('constants.vacation_suspension_document_type')[$licences->suspension_document_type] }}</td>
+                                    <td>{{ $licences->description }}</td>
                                     {{--<td>{{ $licences->comment }}</td>--}}
                                     <td class="text-center">
                                         <div class="btn-group m-r-0 m-b-0">
@@ -136,9 +128,7 @@
                                 <th class="col-md-1">N° Días</th>
                                 <th>Fechas</th>
                                 <th>Documento</th>
-                                {{--<th>Fecha Resoluci&oacute;n</th>--}}
-                                <th>Con remuneraci&oacute;n</th>
-                                <th>Tipo</th>
+                                <th>Descripci&oacute;n</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -149,9 +139,7 @@
                                     <td>{{ $licences->number_days }}</td>
                                     <td>{{ $licences->date_start }} - {{ $licences->date_end }}</td>
                                     <td>{{ config('constants.memorando')[$licences->memorando_type] }}</td>
-{{--                                    <td>{{ $licences->resolution_number }}</td>--}}
-                                    <td>{{ ($licences->with_remunerations == true ? 'Si' : 'No') }}</td>
-                                    <td>{{ config('constants.license_license_resolution_type')[$licences->license_resolution_type] }}</td>
+                                    <td>{{ $licences->description }}</td>
                                     <td class="text-center">
                                         <div class="btn-group m-r-0 m-b-0">
                                             <a href="javascript:;" data-toggle="dropdown"
@@ -183,9 +171,7 @@
                                 <th class="col-md-1">N° Días</th>
                                 <th>Fechas</th>
                                 <th>Documento</th>
-                                {{--<th>Fecha Resoluci&oacute;n</th>--}}
-                                <th>Con remuneraci&oacute;n</th>
-                                <th>Motivo</th>
+                                <th>Descripci&oacute;n</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -196,9 +182,7 @@
                                     <td>{{ $licences->number_days }}</td>
                                     <td>{{ $licences->date_start }} - {{ $licences->date_end }}</td>
                                     <td>{{ config('constants.memorando')[$licences->memorando_type] }}</td>
-{{--                                    <td>{{ $licences->resolution_number }}</td>--}}
-                                    <td>{{ ($licences->with_remunerations == true ? 'Si' : 'No') }}</td>
-                                    <td>{{ config('constants.permit_license_resolution_type')[$licences->permit_reason] }}</td>
+                                    <td>{{ $licences->description }}</td>
                                     <td class="text-center">
                                         <div class="btn-group m-r-0 m-b-0">
                                             <a href="javascript:;" data-toggle="dropdown"

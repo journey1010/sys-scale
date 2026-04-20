@@ -45,33 +45,9 @@
                     </div>
                 </div>
 
-                <!--div class="form-group{{ $errors->has('id_resolution_type') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Tipo Resolución</label>
-                    <div class="col-md-8">
-                        {{ Form::select('id_resolution_type', $resolution_types, $resolution->id_resolution_type,['class' => 'form-control']) }}
-                    </div>
-                    <div class="col-md-offset-3 col-md-8">
-                        @if ($errors->has('id_resolution_type'))
-                            <span class="help-block">
-                                    <strong>{{ $errors->first('id_resolution_type') }}</strong>
-                                </span>
-                        @endif
-                    </div>
-                </div>-->
 
-                <div class="form-group{{ $errors->has('memorando_type') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Tipo Documento</label>
-                    <div class="col-md-8">
-                        {{ Form::select('memorando_type',[ 1 => 'Memorando', 2 => 'Memorando Multiple', 3 => 'Oficio', 4 => 'Oficio Multiple', 5 => 'Resolución' ], $resolution->memorando_type,['class' => 'form-control', 'id' => 'memorando_type','required' => true]) }}
-                    </div>
-                    <div class="col-md-offset-3 col-md-8">
-                        @if ($errors->has('memorando_type'))
-                            <span class="help-block">
-                                    <strong>{{ $errors->first('memorando_type') }}</strong>
-                                </span>
-                        @endif
-                    </div>
-                </div>
+
+
 
                 <div class="form-group{{ $errors->has('issue_date') ? ' has-error' : '' }}">
                     <label class="col-md-3 control-label">Fecha de Emisión</label>

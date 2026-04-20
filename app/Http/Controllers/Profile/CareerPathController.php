@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\SectionAnnex; //CAMBIAR!!!!!
-use Mockery\Exception;
+use Exception;
 use Alert;
 use Session;
 use Carbon\Carbon;

@@ -11,7 +11,7 @@ use App\Models\Resolution;
 use App\Models\User;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
-use Mockery\Exception;
+use Exception;
 use PhpOffice\PhpWord\IOFactory;
 use PhpOffice\PhpWord\PhpWord;
 

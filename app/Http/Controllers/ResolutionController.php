@@ -16,7 +16,7 @@ use App\Models\Section;
 use App\Models\ResolutionType;
 use App\Models\User;
 use Alert;
-use Mockery\Exception;
+use Exception;
 use App\ViewModels\Entry\IndexViewModel;
 use Session;
 use App\Models\SectionAnnex;

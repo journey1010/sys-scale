@@ -32,28 +32,14 @@
                 {{ Form::open(['class' => 'form-horizontal', 'method' => 'post']) }}
 
                 <div class="form-group">
-                    <label class="col-md-3 control-label">N° Resolución</label>
+                    <label class="col-md-3 control-label">N° Documento</label>
                     <div class="col-md-8">
                         <input type="text" class="form-control" value="{{ $resolution->resolution_number or '' }}" disabled />
                     </div>
                 </div>
 
-                <!--div class="form-group">
-                    <label class="col-md-3 control-label">Tipo Resolución</label>
-                    <div class="col-md-8">
-                        <input type="text" class="form-control" value="{{ $resolution_type->name or '' }}" disabled />
-                    </div>
-                </div-->
-
                 <div class="form-group">
-                    <label class="col-md-3 control-label">Tipo de Documento</label>
-                    <div class="col-md-8">
-                        <input type="text" class="form-control" value="{{ config('constants.memorando')[$resolution->memorando_type] }}" disabled />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Fecha Resolución</label>
+                    <label class="col-md-3 control-label">Fecha Documento</label>
                     <div class="col-md-8">
                         <input type="date" class="form-control" value="{{ $resolution->issue_date or '' }}" disabled />
                     </div>
@@ -86,7 +72,7 @@
                         <input type="text" class="form-control" value="{{ $resolution->description or '' }}" disabled />
                     </div>
                 </div>
-            <!--
+
                 <div class="form-group">
                     <label class="col-md-3 control-label">Constancia</label>
                     <div class="col-md-8">
@@ -100,28 +86,6 @@
                         @endif
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Resoluci&oacute;n de licencias</label>
-                    <div class="col-md-8">
-                        {!! Form::select('license_type', config('constants.vacation_license_resolution_type'), $license->license_resolution_type, ['class' => 'form-control','disabled'=>'disabled']) !!}
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Documento de suspensi&oacute;n de vacaciones</label>
-                    <div class="col-md-8">
-                        {!! Form::select('suspension_type', config('constants.vacation_suspension_document_type'), $license->suspension_document_type, ['class' => 'form-control','disabled'=>'disabled']) !!}
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Observaciones</label>
-                    <div class="col-md-8">
-                        <textarea class="form-control" disabled >{{ $license->comment or '' }}</textarea>
-                    </div>
-                </div>
-    -->
 
                 <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3"></label>

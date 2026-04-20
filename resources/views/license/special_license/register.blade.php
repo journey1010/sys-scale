@@ -33,26 +33,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="form-group{{ $errors->has('memorando_type') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Tipo de Documento</label>
-                    <div class="col-md-8">
-                        <select name="memorando_type" id="memorando_type" class="form-control" required="required">
-                            <option value="1">Memorando</option>
-                            <option value="2">Memorando Multiple</option>
-                            <option value="3">Oficio</option>
-                            <option value="4">Oficio Multiple</option>
-                            <option value="5">Resolución</option>
-                        </select>
-                        {{-- {!! Form::select('memorando_type', $resolution_types, null, ['class' => 'form-control','required'=>'required']) !!}--}}
-                    </div>
-                    <div class="col-md-offset-3 col-md-8">
-                        @if ($errors->has('memorando_type'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('memorando_type') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
+
 
                 <div class="form-group{{ $errors->has('issuing_organ') ? ' has-error' : '' }}">
                     <label class="col-md-3 control-label">Órgano que Expide</label>

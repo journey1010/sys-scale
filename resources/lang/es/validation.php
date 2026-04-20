@@ -84,7 +84,7 @@ return [
     'string'               => 'El campo :attribute debe ser una cadena de caracteres.',
     'timezone'             => 'El :attribute debe ser una zona válida.',
     'unique'               => ':attribute ya ha sido registrado.',
-    'uploaded'             => 'Subir :attribute ha fallado.',
+    'uploaded'             => 'Subir :attribute ha fallado. Asegúrese de que el archivo no supere los 2MB.',
     'url'                  => 'El formato :attribute es inválido.',
 
     /*
@@ -154,6 +154,7 @@ return [
         'issuingOrgan'               => 'Organo que Expide',
         'startDate'               => 'Fecha de Inicio',
         'endDate'               => 'Fecha de Fin',
+        'constancy_url'               => 'Constancia',
         'file_url'               => 'archivo',
     ],
 

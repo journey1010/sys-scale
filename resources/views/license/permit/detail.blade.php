@@ -32,28 +32,14 @@
                 {{ Form::open(['class' => 'form-horizontal', 'method' => 'post']) }}
 
                 <div class="form-group">
-                    <label class="col-md-3 control-label">N° Resolución</label>
+                    <label class="col-md-3 control-label">N° Documento</label>
                     <div class="col-md-8">
                         <input type="text" class="form-control" value="{{ $resolution->resolution_number or '' }}" disabled />
                     </div>
                 </div>
 
-                <!--div class="form-group">
-                    <label class="col-md-3 control-label">Tipo Resolución</label>
-                    <div class="col-md-8">
-                        <input type="text" class="form-control" value="{{ $resolution_type->name or '' }}" disabled />
-                    </div>
-                </div>-->
-
                 <div class="form-group">
-                    <label class="col-md-3 control-label">Tipo Documento</label>
-                    <div class="col-md-8">
-                        <input type="text" class="form-control" value="{{ config('constants.memorando')[$resolution->memorando_type] }}" disabled />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Fecha Resolución</label>
+                    <label class="col-md-3 control-label">Fecha Documento</label>
                     <div class="col-md-8">
                         <input type="date" class="form-control" value="{{ $resolution->issue_date or '' }}" disabled />
                     </div>
@@ -101,37 +87,10 @@
                     </div>
                 </div>
 
-                <div class="form-group{{ $errors->has('remunerations') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Remunerada</label>
-                    <div class="col-md-8">
-                        <input type="hidden" name="remunerations" value="0">
-                        <div class="checkbox">
-                            <label>
-                                <input id="license_remu" name="remunerations" type="checkbox" value="1" disabled="disabled" {{ ($license->with_remunerations ? 'checked="checked"' : '') }}>
-                                ¿Con goce de remuneraci&oacute;n?
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group{{ $errors->has('license_type') ? ' has-error' : '' }}">
-                    <label class="col-md-3 control-label">Tipo de Licencia</label>
-                    <div class="col-md-8">
-                        {!! Form::select('license_type', config('constants.permit_license_resolution_type'), $license->permit_reason, ['class' => 'form-control','disabled'=>'disabled']) !!}
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Observaciones</label>
-                    <div class="col-md-8">
-                        <textarea class="form-control" disabled >{{ $license->comment or '' }}</textarea>
-                    </div>
-                </div>
-
                 <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3"></label>
                         <div class="col-md-6 col-sm-6">
-                            <a href="{{ route('license.edit.get', ['id' => $license->id]) }}" class="btn btn-info">Editar</a>
+                            <a href="{{ route('permit.edit.get', ['id' => $license->id]) }}" class="btn btn-info">Editar</a>
                         </div>
                 </div>
                 {{ Form::close() }}
