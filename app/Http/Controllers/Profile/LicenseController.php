@@ -249,6 +249,7 @@ class LicenseController extends Controller
         $vacation_authorization->comment = $request->input('comment', '');
         $vacation_authorization->license_resolution_type = $request->input('license_type', 1);
         $vacation_authorization->suspension_document_type = $request->input('suspension_type', 1);
+        $vacation_authorization->memorando_type = 1;
 
         $vacation_authorization->save();
 
@@ -336,6 +337,7 @@ class LicenseController extends Controller
         $vacation_authorization->comment = $request->input('comment', '');
         $vacation_authorization->license_resolution_type = $request->input('license_type', 1);
         $vacation_authorization->suspension_document_type = $request->input('suspension_type', 1);
+        $vacation_authorization->memorando_type = 1;
 
         $vacation_authorization->save();
 
@@ -418,6 +420,7 @@ class LicenseController extends Controller
         $license_authorization->comment = $request->input('comment', '');
         $license_authorization->with_remunerations = $request->input('remunerations', 0);
         $license_authorization->license_resolution_type = $request->input('license_type', 1);
+        $license_authorization->memorando_type = 1;
 
         $license_authorization->save();
 
@@ -505,6 +508,7 @@ class LicenseController extends Controller
         $license->comment = $request->input('comment', '');
         $license->with_remunerations = $request->input('remunerations', 0);
         $license->license_resolution_type = $request->input('license_type', 1);
+        $license->memorando_type = 1;
         $license->save();
 
         Alert()->success('Completado!', 'Se guardaron los cambios')->persistent('Aceptar');
@@ -583,6 +587,7 @@ class LicenseController extends Controller
         $permit_authorization->comment = $request->input('comment', '');
         $permit_authorization->with_remunerations = $request->input('remunerations', 0);
         $permit_authorization->permit_reason = $request->input('permit_type', 1);
+        $permit_authorization->memorando_type = 1;
 
         $permit_authorization->save();
 
@@ -667,6 +672,7 @@ class LicenseController extends Controller
         $license->comment = $request->input('comment', '');
         $license->with_remunerations = $request->input('remunerations', 0);
         $license->permit_reason = $request->input('permit_type', 1);
+        $license->memorando_type = 1;
         $license->save();
 
         Alert()->success('Completado!', 'Se guardaron los cambios')->persistent('Aceptar');
@@ -750,6 +756,7 @@ class LicenseController extends Controller
         $vacation_authorization->comment = $request->input('comment', '');
         $vacation_authorization->license_resolution_type = $request->input('license_type', 1);
         $vacation_authorization->suspension_document_type = $request->input('suspension_type', 1);
+        $vacation_authorization->memorando_type = 1;
 
         $vacation_authorization->save();
 
@@ -837,6 +844,7 @@ class LicenseController extends Controller
         $vacation_authorization->comment = $request->input('comment', '');
         $vacation_authorization->license_resolution_type = $request->input('license_type', 1);
         $vacation_authorization->suspension_document_type = $request->input('suspension_type', 1);
+        $vacation_authorization->memorando_type = 1;
 
         $vacation_authorization->save();
 
@@ -919,6 +927,7 @@ class LicenseController extends Controller
         $license_authorization->comment = $request->input('comment', '');
         $license_authorization->with_remunerations = $request->input('remunerations', 0);
         $license_authorization->license_resolution_type = $request->input('suspension_license_type', 1);
+        $license_authorization->memorando_type = 1;
 
         $license_authorization->save();
 
@@ -1003,6 +1012,7 @@ class LicenseController extends Controller
         $license->comment = $request->input('comment', '');
         $license->with_remunerations = $request->input('remunerations', 0);
         $license->license_resolution_type = $request->input('license_type', 1);
+        $license->memorando_type = 1;
         $license->save();
 
         Alert()->success('Completado!', 'Se guardaron los cambios')->persistent('Aceptar');
