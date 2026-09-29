@@ -17,7 +17,7 @@ services:
       - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_PASSWORD:-root}
-      - MYSQL_DATABASE=${DB_DATABASE:-sysscale}
+      - MYSQL_DATABASE=${DB_DATABASE:-escalafon}
     volumes:
       # Volumen nombrado en vez de bind mount ./mysqldata: así el datadir no
       # depende de permisos/SELinux del árbol del proyecto, que es lo que
@@ -33,7 +33,7 @@ services:
     # vistas compiladas. No tiene equivalente en Docker Desktop.
     userns_mode: keep-id
     ports:
-      - "8080:8080"
+      - "8081:8080"
     environment:
       # Estas variables ganan sobre el .env del host: phpdotenv 2.x no
       # sobrescribe lo que ya existe en el entorno.

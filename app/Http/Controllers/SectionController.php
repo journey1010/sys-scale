@@ -214,7 +214,7 @@ class SectionController extends Controller
             'id_section' => 'required|integer|exists:section,id',
             'name' => 'required',
             'date' => 'nullable|regex:#^\d{1,4}[-/]\d{1,2}[-/]\d{1,4}$#',
-            'file_url' => 'required|file'
+            'file_url' => 'nullable|file'
         ]);
 
         $section_annex = new SectionAnnex();
@@ -225,16 +225,18 @@ class SectionController extends Controller
         $section_annex->id_section = $request->input('id_section');
         $section_annex->id_user = $request->input('id_user');
 
-        if(is_null($request->file_url)){
-            Alert()->warning('Advertencia!', 'Ingresar Archivo para su anexo.')->persistent('Aceptar');
+        //El archivo es opcional: hay anexos que solo son una referencia (por
+        //ejemplo un numero de documento) y no llevan nada adjunto. Antes el
+        //campo era obligatorio y, si venia vacio, $file->store() reventaba con
+        //"Call to a member function store() on null".
+        if($request->hasFile('file_url'))
+        {
+            //store() devuelve "public/section_annex/<hash>.<ext>"
+            $parts = explode('/', $request->file_url->store('public/section_annex'));
+
+            $section_annex->file_path = '/' . implode('/', $parts);
+            $section_annex->file_url = '/storage/' . $parts[1] . '/' . $parts[2];
         }
-
-//        dd($request->file_url);
-
-        $file = $request->file_url;
-        $filename = $file->store('public/section_annex');
-        $section_annex->file_path = '/' . $filename;
-        $section_annex->file_url = '/storage/' . explode('/', $filename)[1] . '/' . explode('/', $filename)[2];
 
         $section_annex->save();
 
