@@ -213,6 +213,7 @@ class SectionController extends Controller
         $this->validate($request,[
             'id_section' => 'required|integer|exists:section,id',
             'name' => 'required',
+            'date' => 'nullable|regex:#^\d{1,4}[-/]\d{1,2}[-/]\d{1,4}$#',
             'file_url' => 'required|file'
         ]);
 
@@ -220,7 +221,7 @@ class SectionController extends Controller
         $section_annex->name = $request->input('name');
         $section_annex->description = $request->input('description');
         $section_annex->number_doc = $request->input('number_doc');
-        $section_annex->date = Carbon::parse($request->input('date'));
+        $section_annex->date = $this->parseAnnexDate($request->input('date'));
         $section_annex->id_section = $request->input('id_section');
         $section_annex->id_user = $request->input('id_user');
 
@@ -248,6 +249,51 @@ class SectionController extends Controller
         $section_annex->delete();
 
         return back();
+    }
+
+    //Las vistas de anexos configuran bootstrap-datepicker con format:"dd-mm-yyyy",
+    //mientras sanction/index.blade.php usa Form::date() y manda "Y-m-d". Se normaliza
+    //a cualquiera de los dos en vez de delegar en strtotime, que lanza una excepcion
+    //500 ante cualquier separador que no reconozca (por ejemplo "29/09/2026").
+    private function parseAnnexDate($value)
+    {
+        $value = is_string($value) ? trim($value) : '';
+
+        if($value === '')
+            return null;
+
+        //createFromFormat de Carbon 1.x revienta con formatos que llevan "/", asi que
+        //se unifica el separador. El datepicker siempre manda dd y mm con dos digitos,
+        //pero si el usuario teclea la fecha a mano hay que rellenar los ceros.
+        $value = str_replace('/', '-', $value);
+
+        if(preg_match('#^(\d{1,2})-(\d{1,2})-(\d{4})$#', $value, $m))
+            $value = sprintf('%02d-%02d-%s', $m[1], $m[2], $m[3]);
+
+        foreach(['d-m-Y', 'Y-m-d'] as $format)
+        {
+            //El "!" deja en cero los campos que no aparecen en el formato; sin el,
+            //createFromFormat rellena la hora con la actual y el anexo se guardaba
+            //con la hora del momento de subirlo en vez de a medianoche.
+            try
+            {
+                $date = Carbon::createFromFormat('!'.$format, $value);
+            }
+            catch(Exception $e)
+            {
+                //Carbon 1.x lanza InvalidArgumentException en vez de devolver false
+                //cuando sobra data tras la fecha, por ejemplo "2026-09-29" con "d-m-Y".
+                continue;
+            }
+
+            //createFromFormat ignora el resto de la cadena y desborda dias y meses
+            //outofrange, asi que se confirma que la fecha leida sea identica a la
+            //recibida. "2026-13-45" no debe acabar guardado como 2027-02-14.
+            if($date->format($format) === $value)
+                return $date;
+        }
+
+        return null;
     }
 
 }

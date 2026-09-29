@@ -1,0 +1,27 @@
+# Contexto de build: solo lo necesario para la imagen.
+# El código llega por bind mount, así que aquí no hace falta casi nada.
+.git
+.gitignore
+.vscode
+.idea
+
+# Datos de MySQL: pesa y solo los necesita el servicio db.
+mysqldata
+
+# Se instalan por bind mount, no en la imagen.
+vendor
+node_modules
+
+# Artefactos de ejecución.
+public/storage
+storage/logs/*
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*
+public/hot
+public/build
+.phpunit.result.cache
+
+# Dump giants que no hacen falta para el build.
+*.sql
+index.html

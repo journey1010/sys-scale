@@ -1,5 +1,8 @@
 /.phpunit.cache
 /node_modules
+# Datadir de MySQL: ya no se usa (compose.yml monta el volumen nombrado
+# db_sysscale), pero se ignora por si alguien levanta un compose antiguo.
+/mysqldata
 /public/build
 /public/hot
 /public/storage

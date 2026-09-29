@@ -1,18 +1,72 @@
+# =============================================================================
+# Escalafon — Laravel 5.4 + PHP 7.4, live coding con Podman
+# =============================================================================
+#   podman compose up -d --build      # http://localhost:8080
+#   podman compose logs -f app
+#   podman compose down
+#
+# El código se monta en bind mount, así que editar en el host se refleja al
+# instante (opcache con validate_timestamps=1 y realpath_cache desactivado).
+# =============================================================================
 services:
+
   db:
     image: docker.io/library/mysql:8.4
+    container_name: sysscale_db
     ports:
       - "3306:3306"
-    volumes:
-      - ./mysqldata:/var/lib/mysql:Z
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=sysscale
-      - MYSQL_USER=sysscale
-      - MYSQL_PASSWORD=sysscale
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD:-root}
+      - MYSQL_DATABASE=${DB_DATABASE:-sysscale}
+    volumes:
+      # Volumen nombrado en vez de bind mount ./mysqldata: así el datadir no
+      # depende de permisos/SELinux del árbol del proyecto, que es lo que
+      # hacía que mysqld perdiera el acceso al redo log.
+      - db_sysscale:/var/lib/mysql
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sysscale_app
+    # Propio de Podman: mapea el UID/GID del host al root del contenedor, para
+    # no dejar archivos de root en el bind mount al guardar código, logs o
+    # vistas compiladas. No tiene equivalente en Docker Desktop.
+    userns_mode: keep-id
+    ports:
+      - "8080:8080"
+    environment:
+      # Estas variables ganan sobre el .env del host: phpdotenv 2.x no
+      # sobrescribe lo que ya existe en el entorno.
+      APP_ENV: local
+      APP_DEBUG: "true"
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: "3306"
+      DB_DATABASE: ${DB_DATABASE:-sysscale}
+      DB_USERNAME: ${DB_USERNAME:-root}
+      DB_PASSWORD: ${DB_PASSWORD:-root}
+      # Depurador: pon "debug"/"yes" aquí y reinicia; no hay que rebuild.
+      XDEBUG_MODE: ${XDEBUG_MODE:-off}
+      XDEBUG_START_WITH_REQUEST: ${XDEBUG_START_WITH_REQUEST:-no}
+      # Descomentar para que el entrypoint ejecute composer install al arrancar.
+      # RUN_COMPOSER_INSTALL: "1"
+    volumes:
+      - .:/var/www/html:z
+    extra_hosts:
+      - "host.containers.internal:host-gateway"
+    depends_on:
+      - db
+    healthcheck:
+      # /up no existe en Laravel 5.4; se comprueba el socket del servidor.
+      test: ["CMD", "php", "-r", "exit(@fsockopen('127.0.0.1', 8080) ? 0 : 1);"]
+      interval: 15s
+      timeout: 5s
+      start_period: 20s
+      retries: 5
 
+volumes:
+  db_sysscale:
 
-
-
-
-      
+networks:
+  default:
+    name: sysscale

@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+# =============================================================================
+# Entrypoint de desarrollo — Escalafon (Laravel 5.4)
+# =============================================================================
+# Prepara el bind mount (permisos de storage, enlace de public/storage) y
+# espera a la base de datos antes de levantar el servidor embebido de PHP.
+# =============================================================================
+set -e
+
+cd /var/www/html
+
+# -----------------------------------------------------------------------------
+# Espera a que MySQL acepte conexiones (máx. 60 s)
+# -----------------------------------------------------------------------------
+db_host="${DB_HOST:-db}"
+db_port="${DB_PORT:-3306}"
+
+php -r '
+$host = getenv("DB_HOST") ?: "db";
+$port = (int) (getenv("DB_PORT") ?: 3306);
+$deadline = time() + 60;
+while (time() < $deadline) {
+    $sock = @fsockopen($host, $port, $errno, $errstr, 2);
+    if ($sock) { fclose($sock); exit(0); }
+    fwrite(STDERR, "Esperando MySQL en {$host}:{$port}...\n");
+    sleep(1);
+}
+fwrite(STDERR, "MySQL no respondio en el tiempo esperado; se continua de todos modos.\n");
+exit(0);
+'
+
+# -----------------------------------------------------------------------------
+# Directorios que Laravel 5.4 necesita para escribir (logs, vistas compiladas,
+# sesiones). No se hace chmod -R: con userns_mode:keep-id el contenedor ya
+# corre como el usuario del host y un chmod -R ensuciaría los permisos del
+# bind mount y el modo de los ficheros versionados en git.
+# -----------------------------------------------------------------------------
+mkdir -p \
+    storage/framework/cache/data \
+    storage/framework/sessions \
+    storage/framework/views \
+    storage/logs \
+    storage/app/public \
+    bootstrap/cache
+
+# -----------------------------------------------------------------------------
+# public/storage -> storage/app/public
+# Necesario para los anexos que sube SectionController@createAnnex, que guarda
+# en storage/app/public y expone como /storage/...
+# -----------------------------------------------------------------------------
+if [ ! -e public/storage ]; then
+    # Laravel 5.4 no tiene --force en storage:link; el ln de abajo es el
+    # respaldo si artisan no está disponible.
+    php artisan storage:link 2>/dev/null \
+        || ln -sf ../storage/app/public public/storage
+fi
+
+# -----------------------------------------------------------------------------
+# Opcional: composer install (útil la primera vez o tras cambiar composer.json)
+# Activar con RUN_COMPOSER_INSTALL=1
+# -----------------------------------------------------------------------------
+if [ "${RUN_COMPOSER_INSTALL:-0}" = "1" ]; then
+    echo "==> composer install"
+    composer install --no-interaction --prefer-dist
+fi
+
+# -----------------------------------------------------------------------------
+# Opcional: limpiar cachés de Laravel 5.4 (config, rutas, vistas)
+# Activar con RUN_ARTISAN_OPTIMIZE=1
+# -----------------------------------------------------------------------------
+if [ "${RUN_ARTISAN_OPTIMIZE:-0}" = "1" ]; then
+    php artisan optimize || true
+fi
+
+exec "$@"

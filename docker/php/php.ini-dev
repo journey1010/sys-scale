@@ -1,0 +1,51 @@
+; =============================================================================
+; PHP config para live coding (Laravel 5.4 / PHP 7.4)
+; Se monta en /usr/local/etc/php/conf.d/zz-app.ini
+; =============================================================================
+
+; --- Errores visibles en el navegador mientras se desarrolla -----------------
+display_errors = On
+display_startup_errors = On
+error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT
+log_errors = On
+
+; --- Recursos ----------------------------------------------------------------
+memory_limit = 512M
+max_execution_time = 0
+max_input_time = -1
+max_input_vars = 5000
+
+; --- Upload de anexos (section/create_annex y similares) ---------------------
+upload_max_filesize = 32M
+post_max_size = 40M
+max_file_uploads = 20
+
+; --- Locale ------------------------------------------------------------------
+date.timezone = America/Lima
+intl.default_locale = es_PE
+
+; --- OPcache: invalidar en cada request para que el código nuevo se vea ------
+opcache.enable = 1
+opcache.enable_cli = 0
+opcache.validate_timestamps = 1
+opcache.revalidate_freq = 0
+
+; --- Realpath cache: imprescindible para que opcache vea los cambios ---------
+realpath_cache_size = 0
+realpath_cache_ttl = 0
+
+; --- Sesión ------------------------------------------------------------------
+session.use_strict_mode = 1
+session.cookie_httponly = 1
+
+; --- Xdebug ------------------------------------------------------------------
+; Apagado por defecto. Para depurar basta con poner en compose.yml:
+;   XDEBUG_MODE: debug
+;   XDEBUG_START_WITH_REQUEST: yes
+; (no hay que reconstruir la imagen)
+xdebug.mode = off
+xdebug.start_with_request = no
+xdebug.client_host = host.docker.internal
+xdebug.client_port = 9003
+xdebug.discover_client_host = false
+xdebug.idekey = vscode
