@@ -400,10 +400,17 @@ class ResolutionController extends Controller
             //DECLARO MODELO PARA LA VISTA
             $model = new IndexViewModel();
 
-            if ($id == null) return view('permit.index', compact('model'));
+            //Sin $id no hay nada que mostrar. Devolver permit.index (que es lo que
+            //hacia antes) renderizaba la vista equivocada y ademas sin
+            //$section_annexes. Redirect, igual que el catch de este metodo.
+            if ($id == null) return redirect()->action('Profile\StaffManagementController@index');
 
             //GUARDAR EN SESION USUARIO QUE SE ESTA GESTIONANDO
             $objUser = User::select('id', 'name')->find($id);
+
+            //Un id inexistente o un usuario con deleted_at devuelve null, y
+            //$objUser->name reventaria antes de poder comprobarlo.
+            if (is_null($objUser)) return redirect()->action('Profile\StaffManagementController@index');
 
             Session::put('userName', $objUser->name);
             Session::put('userId', $objUser->id);
@@ -411,6 +418,10 @@ class ResolutionController extends Controller
             //OBTENER LOS TIPOS DE RESOLUCIONES ASOCIADOS A LA SECCIÓN
             $section_Result = Section::where('alias', '=', 'renuncias')->select('name', 'id')->get();
             $section = $section_Result->first();
+
+            //Si el alias de la seccion no existe en la base, $section es null
+            //y $section->id reventaria.
+            if (is_null($section)) return redirect()->action('Profile\StaffManagementController@index');
 
             $model->resolutions = ResolutionType::join('section_resolution_type', 'resolution_type.id', 'section_resolution_type.id_resolution_type')
                 ->join('section', 'section.id', 'section_resolution_type.id_section')
@@ -438,10 +449,17 @@ class ResolutionController extends Controller
         //DECLARO MODELO PARA LA VISTA
         $model = new IndexViewModel();
 
-        if ($id == null) return view('permit.index', compact('model'));
+        //Sin $id no hay nada que mostrar. Devolver permit.index (que es lo que
+        //hacia antes) renderizaba la vista equivocada y ademas sin
+        //$section_annexes. Redirect, igual que el catch de este metodo.
+        if ($id == null) return redirect()->action('Profile\StaffManagementController@index');
 
         //GUARDAR EN SESION USUARIO QUE SE ESTA GESTIONANDO
         $user = User::select('id', 'name')->find($id);
+
+        //Un id inexistente o un usuario con deleted_at devuelve null, y
+        //$user->name reventaria antes de poder comprobarlo.
+        if (is_null($user)) return redirect()->action('Profile\StaffManagementController@index');
 
         Session::put('userName', $user->name);
         Session::put('userId', $user->id);
@@ -449,6 +467,10 @@ class ResolutionController extends Controller
         //OBTENER LOS TIPOS DE RESOLUCIONES ASOCIADOS A LA SECCIÓN
         $section_Result = Section::where('alias', '=', 'evaluacion')->select('name', 'id')->get();
         $section = $section_Result->first();
+
+            //Si el alias de la seccion no existe en la base, $section es null
+            //y $section->id reventaria.
+            if (is_null($section)) return redirect()->action('Profile\StaffManagementController@index');
 
         $model->resolutions = ResolutionType::join('section_resolution_type', 'resolution_type.id', 'section_resolution_type.id_resolution_type')
             ->join('section', 'section.id', 'section_resolution_type.id_section')
@@ -475,10 +497,17 @@ class ResolutionController extends Controller
             //DECLARO MODELO PARA LA VISTA
             $model = new IndexViewModel();
 
-            if ($id == null) return view('permit.index', compact('model'));
+            //Sin $id no hay nada que mostrar. Devolver permit.index (que es lo que
+            //hacia antes) renderizaba la vista equivocada y ademas sin
+            //$section_annexes. Redirect, igual que el catch de este metodo.
+            if ($id == null) return redirect()->action('Profile\StaffManagementController@index');
 
             //GUARDAR EN SESION USUARIO QUE SE ESTA GESTIONANDO
             $objUser = User::select('id', 'name')->find($id);
+
+            //Un id inexistente o un usuario con deleted_at devuelve null, y
+            //$objUser->name reventaria antes de poder comprobarlo.
+            if (is_null($objUser)) return redirect()->action('Profile\StaffManagementController@index');
 
             Session::put('userName', $objUser->name);
             Session::put('userId', $objUser->id);
@@ -486,6 +515,10 @@ class ResolutionController extends Controller
             //OBTENER LOS TIPOS DE RESOLUCIONES ASOCIADOS A LA SECCIÓN
             $section_Result = Section::where('alias', '=', 'produccionintelectual')->select('name', 'id')->get();
             $section = $section_Result->first();
+
+            //Si el alias de la seccion no existe en la base, $section es null
+            //y $section->id reventaria.
+            if (is_null($section)) return redirect()->action('Profile\StaffManagementController@index');
 
             $model->resolutions = ResolutionType::join('section_resolution_type', 'resolution_type.id', 'section_resolution_type.id_resolution_type')
                 ->join('section', 'section.id', 'section_resolution_type.id_section')
@@ -514,10 +547,17 @@ class ResolutionController extends Controller
             //DECLARO MODELO PARA LA VISTA
             $model = new IndexViewModel();
 
-            if ($id == null) return view('permit.index', compact('model'));
+            //Sin $id no hay nada que mostrar. Devolver permit.index (que es lo que
+            //hacia antes) renderizaba la vista equivocada y ademas sin
+            //$section_annexes. Redirect, igual que el catch de este metodo.
+            if ($id == null) return redirect()->action('Profile\StaffManagementController@index');
 
             //GUARDAR EN SESION USUARIO QUE SE ESTA GESTIONANDO
             $objUser = User::select('id', 'name')->find($id);
+
+            //Un id inexistente o un usuario con deleted_at devuelve null, y
+            //$objUser->name reventaria antes de poder comprobarlo.
+            if (is_null($objUser)) return redirect()->action('Profile\StaffManagementController@index');
 
             Session::put('userName', $objUser->name);
             Session::put('userId', $objUser->id);
@@ -525,6 +565,10 @@ class ResolutionController extends Controller
             //OBTENER LOS TIPOS DE RESOLUCIONES ASOCIADOS A LA SECCIÓN
             $section_Result = Section::where('alias', '=', 'desplacement')->select('name', 'id')->get();
             $section = $section_Result->first();
+
+            //Si el alias de la seccion no existe en la base, $section es null
+            //y $section->id reventaria.
+            if (is_null($section)) return redirect()->action('Profile\StaffManagementController@index');
 
             $model->resolutions = ResolutionType::join('section_resolution_type', 'resolution_type.id', 'section_resolution_type.id_resolution_type')
                 ->join('section', 'section.id', 'section_resolution_type.id_section')
