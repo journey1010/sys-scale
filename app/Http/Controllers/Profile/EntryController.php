@@ -23,22 +23,31 @@ class EntryController extends Controller
 
     public function index($id = null){
 
-        try{
+        //DECLARO MODELO PARA LA VISTA
+        $model = new IndexViewModel();
 
-            if($id == null) return view('entry.index');
+        //La vista siempre itera $section_annexes. Si no se la pasada, el
+        //@if($section_annexes != null) de la tabla lanza "Undefined variable"
+        //y la pagina muere con un 500 en vez de mostrar la tabla vacia.
+        $section_annexes = collect();
+
+        if($id == null) return view('entry.index', compact('model', 'section_annexes'));
+
+        try{
 
             //GUARDAR EN SESION USUARIO QUE SE ESTA GESTIONANDO
             $objUser = User::select('id', 'name')->find($id);
 
+            if(is_null($objUser)) return view('entry.index', compact('model', 'section_annexes'));
+
             Session::put('userName', $objUser->name );
             Session::put('userId', $objUser->id );
-
-            //DECLARO MODELO PARA LA VISTA
-            $model = new IndexViewModel();
 
             //OBTENER LOS TIPOS DE RESOLUCIONES ASOCIADOS A LA SECCIÓN
             $section_Result = Section::where('alias','=','ingresosReingresos')->select('name','id')->get();
             $section = $section_Result->first();
+
+            if(is_null($section)) return view('entry.index', compact('model', 'section_annexes'));
 
             $model->resolutions = ResolutionType::join('section_resolution_type','resolution_type.id','section_resolution_type.id_resolution_type')
                 ->join('section','section.id','section_resolution_type.id_section')
@@ -57,7 +66,7 @@ class EntryController extends Controller
             return view('entry.index', compact('model', 'section_annexes'));
 
         } catch(\Exception $e){
-            return view('entry.index', compact('model'));
+            return view('entry.index', compact('model', 'section_annexes'));
         }
     }
 

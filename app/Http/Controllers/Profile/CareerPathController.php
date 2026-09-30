@@ -26,15 +26,22 @@ class CareerPathController extends Controller
 
     public function index($id = null)
     {
+        //DECLARO MODELO PARA LA VISTA
+        $model = new IndexViewModel();
+
+        //La vista siempre itera $section_annexes. Si no se la pasamos, el
+        //@if($section_annexes != null) de la tabla lanza "Undefined variable"
+        //y la pagina muere con un 500 en vez de mostrar la tabla vacia.
+        $section_annexes = collect();
+
+        if($id == null) return view('careerPath.index', compact('model', 'section_annexes'));
+
         try{
-
-            //DECLARO MODELO PARA LA VISTA
-            $model = new IndexViewModel();
-
-            if($id == null) return view('careerPath.index', compact('model'));
 
             //GUARDAR EN SESION USUARIO QUE SE ESTA GESTIONANDO
             $objUser = User::select('id', 'name')->find($id);
+
+            if(is_null($objUser)) return view('careerPath.index', compact('model', 'section_annexes'));
 
             Session::put('userName', $objUser->name );
             Session::put('userId', $objUser->id );
@@ -42,6 +49,8 @@ class CareerPathController extends Controller
             //OBTENER LOS TIPOS DE RESOLUCIONES ASOCIADOS A LA SECCIÓN
             $section_Result = Section::where('alias','=','trayectoriaLaboral')->select('name','id')->get();
             $section = $section_Result->first();
+
+            if(is_null($section)) return view('careerPath.index', compact('model', 'section_annexes'));
 
             $model->resolutions = ResolutionType::join('section_resolution_type','resolution_type.id','section_resolution_type.id_resolution_type')
                 ->join('section','section.id','section_resolution_type.id_section')
@@ -57,7 +66,7 @@ class CareerPathController extends Controller
             return view('careerPath.index', compact('model', 'section_annexes'));
 
         } catch(\Exception $e){
-            return view('careerPath.index', compact('model'));
+            return view('careerPath.index', compact('model', 'section_annexes'));
         }
     }
 

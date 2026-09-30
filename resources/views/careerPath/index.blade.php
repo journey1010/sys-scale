@@ -189,11 +189,7 @@
     }).on('changeDate', function(e){
         $(this).datepicker('hide');
     });
-        $(document).ready(function() {
-            @if ($errors->any())
-            $('#myModal').modal('toggle');
-            @endif
-        })
-
     </script>
+
+@include('partials.annex-modal-errors')
 @endsection

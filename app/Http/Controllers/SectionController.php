@@ -212,6 +212,7 @@ class SectionController extends Controller
     {
         $this->validate($request,[
             'id_section' => 'required|integer|exists:section,id',
+            'id_user' => 'required|integer|exists:users,id',
             'name' => 'required',
             'date' => 'nullable|regex:#^\d{1,4}[-/]\d{1,2}[-/]\d{1,4}$#',
             'file_url' => 'nullable|file'

@@ -234,4 +234,6 @@
         });
 
     </script>
+@include('partials.annex-modal-errors')
+
 @endsection

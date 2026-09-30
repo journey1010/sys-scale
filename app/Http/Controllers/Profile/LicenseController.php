@@ -37,10 +37,17 @@ class LicenseController extends Controller
             //DECLARO MODELO PARA LA VISTA
             $model = new IndexViewModel();
 
-            if($id == null) return view('license.index', compact('model'));
+            //license.index necesita 12 variables (licences_section,
+            //vacation_authorizations, licence_authorizations, etc.) que solo se
+            //llenan con un $id. Sin usuario no hay nada que mostrar, y devolver
+            //la vista a medias reventaba con "Undefined variable". Es el mismo
+            //criterio que ya usa el catch de este metodo.
+            if($id == null) return redirect('staff_management');
 
             //GUARDAR EN SESION USUARIO QUE SE ESTA GESTIONANDO
             $objUser = User::select('id', 'name')->find($id);
+
+            if(is_null($objUser)) return redirect('staff_management');
 
             Session::put('userName', $objUser->name );
             Session::put('userId', $objUser->id );
@@ -48,6 +55,8 @@ class LicenseController extends Controller
             //OBTENER LOS TIPOS DE RESOLUCIONES ASOCIADOS A LA SECCIÓN
             $section_Result = Section::where('alias','=','licenciasVacaciones')->select('name','id')->get();
             $section = $section_Result->first();
+
+            if(is_null($section)) return redirect('staff_management');
 
             $model->resolutions = ResolutionType::join('section_resolution_type','resolution_type.id','section_resolution_type.id_resolution_type')
                 ->join('section','section.id','section_resolution_type.id_section')
