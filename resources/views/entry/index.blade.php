@@ -51,7 +51,12 @@
                                                 class="btn btn-info btn-xs dropdown-toggle">Opciones <span
                                                 class="caret"></span></a>
                                                 <ul class="dropdown-menu" style="left: unset; right: 0">
-                                                    <li><a href="{{ url($section_annex->file_url) }}" target="_blank">Detalle</a></li>
+{{-- url(null) devuelve el UrlGenerator entero y e() revienta con
+     "htmlspecialchars() expects parameter 1 to be string, object given".
+     Los anexos sin archivo se guardan con file_url NULL. --}}
+                                                    @if($section_annex->file_url)
+                                                    <li><a href="{{ $section_annex->file_url }}" target="_blank">Detalle</a></li>
+                                                    @endif
                                                     <li class="divider"></li>
                                                     <li><a href="{{ route('deleteSectionAnnex', $section_annex->id) }}">Eliminar</a></li>
                                                 </ul>
