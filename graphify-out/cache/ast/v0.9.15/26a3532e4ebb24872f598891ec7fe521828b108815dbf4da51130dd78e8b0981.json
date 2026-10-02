@@ -1,0 +1,1 @@
+{"nodes": [{"id": "home_journii_dev_sys_scale_vendor_symfony_http_foundation_tests_fixtures_response_functional_common_inc", "label": "common.inc", "file_type": "code", "source_file": "vendor/symfony/http-foundation/Tests/Fixtures/response-functional/common.inc", "source_location": "L1"}], "edges": [], "input_tokens": 0, "output_tokens": 0, "raw_calls": []}

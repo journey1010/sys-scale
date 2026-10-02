@@ -1,0 +1,1 @@
+{"nodes": [{"id": "home_journii_dev_sys_scale_vendor_phpunit_php_token_stream_tests_fixture_closure_php", "label": "closure.php", "file_type": "code", "source_file": "vendor/phpunit/php-token-stream/tests/_fixture/closure.php", "source_location": "L1"}], "edges": [], "raw_calls": []}

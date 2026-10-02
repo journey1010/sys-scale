@@ -1,0 +1,1 @@
+{"nodes": [{"id": "home_journii_dev_sys_scale_vendor_swiftmailer_swiftmailer_lib_dependency_maps_mime_deps_php", "label": "mime_deps.php", "file_type": "code", "source_file": "vendor/swiftmailer/swiftmailer/lib/dependency_maps/mime_deps.php", "source_location": "L1"}], "edges": [], "raw_calls": []}

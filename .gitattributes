@@ -9,3 +9,16 @@
 /.github export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
+
+bruno/** linguist-vendored
+.claude/** linguist-vendored
+.agents/** linguist-vendored
+.opencode/** linguist-vendored
+.vscode/** linguist-vendored
+graphify-out/** linguist-vendored
+*.md linguist-documentation
+
+# Scripts: LF siempre (crítico para Docker/contenedores, especialmente en Windows)
+*.sh text eol=lf
+docker/** text eol=lf
+Caddyfile text eol=lf
