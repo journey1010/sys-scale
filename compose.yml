@@ -17,7 +17,7 @@ services:
       - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_PASSWORD:-root}
-      - MYSQL_DATABASE=${DB_DATABASE:-escalafon}
+      - MYSQL_DATABASE=${DB_DATABASE:-laravel}
     volumes:
       # Volumen nombrado en vez de bind mount ./mysqldata: así el datadir no
       # depende de permisos/SELinux del árbol del proyecto, que es lo que
